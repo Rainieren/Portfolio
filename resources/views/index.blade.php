@@ -1,13 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="introduction flex items-center" style="height: calc(100vh - 70px)">
+    <section class="introduction flex items-center bg-gray-200" style="height: calc(100vh - 70px)">
         <div class="container mx-auto">
             <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 px-5 sm:px-5 md:px-0 lg:px-0 xl:px-0 gap-5">
                 <div class="bg-gray-300 h-12 w-full animate-pulse"></div>
                 <div class="bg-gray-500 h-12 w-full animate-pulse"></div>
                 <div class="bg-gray-300 h-12 w-full animate-pulse"></div>
                 <div class="bg-gray-500 h-12 w-full animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-about-me p-5 md:p-5 lg:p-10 xl:p-10 bg-white">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1">
+                <h2 class="font-bold text-center heading">Over mij</h2>
             </div>
         </div>
     </section>
@@ -77,6 +85,7 @@
                     Button
                 </button>
                 @for ($i = 0; $i < 4; $i++)
+                    
                     <button class="bg-none hover:bg-indigo-600 text-black hover:text-white font-bold py-2 px-4 rounded-full">
                         Button
                     </button>

@@ -9,8 +9,8 @@
     <link href="{{ asset('css/emoji.min.css') }}" rel="stylesheet">
 </head>
     <body class="antialiased" id="app">
-        <nav class=" flex items-center justify-between flex-wrap p-5 sm:p-5 md:p-5 lg:px-0 xl:px-0 shadow-lg">
-            <div class="container mx-auto">
+        <nav class=" flex items-center bg-gray-200 justify-between flex-wrap p-5 sm:p-5 md:p-5 lg:px-0 xl:px-0 shadow-lg">
+            <div class="container mx-auto ">
                 <div class="grid grid-cols-2">
                     <div class=" text-black mr-6">
                         <span class="font-semibold text-xl">Portfoli<span class="text-indigo-600">o</span></span>
