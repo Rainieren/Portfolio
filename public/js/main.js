@@ -8,37 +8,41 @@ $(document).ready(function() {
             }, 2000);
         }
     });
+    function openProjectModal($project) {
+        $('html body').addClass("overflow-hidden");
+        $('.overlay').removeClass('hidden')
+        let destination = $('.project-' + $project);
+        destination.removeClass('hidden').delay(500).addClass('animate__animated animate__zoomIn animate__faster active-modal')
+    }
 
     $('.read-more-button').on('click', function() {
-        let data = 'target-project';
-        if($(this).data(data)) {
-            $('html body').addClass("overflow-hidden");
-            $('.overlay').removeClass('hidden')
-
-            let destination = $('.project-' + $(this).data(data));
-            destination.removeClass('hidden').delay(500).addClass('animate__animated animate__zoomIn animate__faster')
-        }
+        openProjectModal($(this).data('target-project'));
     });
+
+    function closeProjectModal() {
+        let destination = $(".active-modal");
+        destination.removeClass('animate__animated animate__zoomIn animate__faster').addClass("animate__animated animate__faster animate__zoomOut");
+        setTimeout(function () {
+            destination.addClass("hidden");
+            destination.removeClass("animate__animated animate__faster animate__zoomOut");
+            $('.overlay').delay(300).addClass('hidden')
+        }, 300)
+        $('html body').removeClass("overflow-hidden");
+    }
+
+    $(document).on('click', ".close-project", function(e) {
+        e.stopPropagation();
+        closeProjectModal()
+    });
+
+    $('#nav-collapse').on('click', function () {
+        $('#nav-content').slideToggle();
+    })
 
     $('.submit-contact').on('submit', function(e)  {
         e.preventDefault();
         $('.submit-contact-button span:first-child').removeClass('hidden');
         $('.submit-button-text').text('Verwerken');
     });
-
-    $('.close-project').on('click', function() {
-        let data = 'target-project';
-        if($(this).data(data)) {
-            let destination = $('.project-' + $(this).data(data));
-            destination.removeClass('animate__animated animate__zoomIn animate__faster').addClass("animate__animated animate__faster animate__zoomOut")
-            setTimeout(function () {
-                destination.addClass("hidden")
-                destination.removeClass("animate__animated animate__faster animate__zoomOut")
-                $('.overlay').delay(300).addClass('hidden')
-            }, 300)
-            $('html body').removeClass("overflow-hidden");
-        }
-    });
-
 
 });

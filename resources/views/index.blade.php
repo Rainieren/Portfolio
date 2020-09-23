@@ -1,29 +1,44 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="introduction flex items-center bg-gray-200" style="height: calc(100vh - 70px)">
+    <section class="section-about-me p-5 md:p-5 lg:p-10 xl:p-10 bg-gray-200 flex items-center" style="min-height: calc(100vh - 70px);">
         <div class="container mx-auto">
             <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 px-5 sm:px-5 md:px-0 lg:px-0 xl:px-0 gap-5">
-                <div class="bg-gray-300 h-12 w-full animate-pulse"></div>
-                <div class="bg-gray-500 h-12 w-full animate-pulse"></div>
-                <div class="bg-gray-300 h-12 w-full animate-pulse"></div>
-                <div class="bg-gray-500 h-12 w-full animate-pulse"></div>
+                <div class="introduction">
+                    <h1 class="font-bold">Over mij</h1>
+                    <div class="line h-1 bg-indigo-600 w-24 rounded-full"></div>
+                    <div class="text my-5">
+                        <p class="text-gray-800">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aspernatur aut consectetur corporis delectus eius est facere iure iusto minus nam odit quas sint soluta, tempora tempore vitae voluptas.</p>
+                        <p class="text-gray-800 my-5">Meer weten? Klik op de pijl</p>
+                        <div class="bounce-arrow w-100 flex justify-center">
+                            <a href="#" class="nav-slide" data-nav-destination="work">
+                                <svg class="animate-bounce w-6 h-6 text-gray-900" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="introduction-image flex justify-center">
+                    <span class="relative rounded-full h-64 w-64 bg-gray-400 block p-5">
+                        <span class="relative rounded-full h-full w-full bg-indigo-600 block p-5">
+                            <span class="relative rounded-full h-full w-full bg-indigo-700 block p-5">
+                                <span class="relative rounded-full h-full w-full bg-indigo-800 block p-5">
+                                    <span class="relative rounded-full h-full w-full bg-indigo-900 block"></span>
+                                </span>
+                            </span>
+                        </span>
+                    </span>
+                </div>
             </div>
+
         </div>
     </section>
 
-    <section class="section-about-me p-5 md:p-5 lg:p-10 xl:p-10 bg-white">
+    <section class="section-work  p-5 md:p-5 lg:p-10 xl:p-10 bg-white">
         <div class="container mx-auto">
-            <div class="grid grid-cols-1">
-                <h2 class="font-bold text-center heading">Over mij</h2>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-work  p-5 md:p-5 lg:p-10 xl:p-10 bg-gray-200">
-        <div class="container mx-auto">
-            <div class="grid grid-cols-1">
-                <h2 class="font-bold text-center heading">Mijn werkervaring</h2>
+            <div class="grid grid-cols-1 my-5">
+                <p class="font-bold mb-4 gilroy text-4xl xl:text-4xl lg:text-4xl md:text-4xl sm:text-4xl">Mijn werkervaring</p>
             </div>
             <div class="grid grid-cols-1 my-5">
                 <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-10">
@@ -75,10 +90,10 @@
         </div>
     </section>
 
-    <section class="section-projects bg-white p-5 md:p-5 lg:p-10 xl:p-10">
+    <section class="section-projects bg-gray-200 p-5 md:p-5 lg:p-10 xl:p-10">
         <div class="container mx-auto">
             <div class="grid grid-cols-1">
-                <h2 class="font-bold text-center heading">Mijn projecten</h2>
+                <p class="font-bold mb-4 gilroy text-4xl xl:text-4xl lg:text-4xl md:text-4xl sm:text-4xl">Mijn projecten</p>
             </div>
             <div class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-12 gap-5 my-5">
                 <button class="bg-indigo-600 hover:bg-indigo-700 text-white hover:text-white font-bold py-2 px-4 rounded-full">
@@ -86,7 +101,7 @@
                 </button>
                 @for ($i = 0; $i < 4; $i++)
 
-                    <button class="bg-none hover:bg-indigo-600 text-black hover:text-white font-bold py-2 px-4 rounded-full">
+                    <button class="bg-none hover:bg-indigo-600 text-black hover:text-white font-bold py-2 px-4 rounded-full transition duration-150 ease-in-out">
                         Button
                     </button>
                 @endfor
@@ -106,7 +121,7 @@
                                 </div>
                             </div>
                             <div class="read-more my-3">
-                                <button type="button" class="text-indigo-600 read-more-button" data-target-project="{{ $i + 1 }}">Lees meer {{ $i + 1 }}</button>
+                                <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out hover:text-indigo-900 read-more-button" data-target-project="{{ $i + 1 }}">Lees meer {{ $i + 1 }}</button>
                             </div>
                         </div>
                     </div>
@@ -115,11 +130,11 @@
         </div>
     </section>
 
-    <div class="overlay fixed w-full h-full bg-gray-800 bg-opacity-75 top-0 left-0 flex items-center justify-center hidden z-10">
+    <div class="overlay fixed w-full h-full bg-gray-800 bg-opacity-75 top-0 left-0 flex items-center justify-center hidden z-10 close-project">
         @for ($i = 0; $i < 6; $i++)
-            <div class="relative rounded overflow-hidden shadow-lg bg-white hidden project-card project-{{ $i + 1 }} m-5">
+            <div class="relative rounded overflow-hidden shadow-lg bg-white hidden project-card project-{{ $i + 1 }} m-5" data-target-modal="{{ $i + 1 }}">
                 <div class="p-6">
-                    <div class="font-bold text-xl mb-2">The Coldest Sunset {{ $i + 1 }}</div>
+                    <div class="font-bold gilroy text-3xl mb-2">The Coldest Sunset {{ $i + 1 }}</div>
                     <p class="text-gray-700 text-sm md:text-base lg:text-base xl:text-base">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
                     </p>
@@ -140,8 +155,8 @@
                         <div class="bg-white rounded-lg shadow-lg p-5 md:p-5 lg:p-10 xl:p-10">
                             <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-10">
                                 <div>
-                                    <h2 class="font-bold mb-4 heading">Kom in contact</h2>
-                                    <p class="text-gray-600 ">Wil je contact met mij opnemen? Dat kan! Ik ben te bereiken op allerei platformen. Hieronder kan je een van de opties kiezen!</p>
+                                    <p class="font-bold mb-4 gilroy text-4xl xl:text-4xl lg:text-4xl md:text-4xl sm:text-4xl">Kom in contact</p>
+                                    <p class="text-gray-600 ">Wil je contact met mij opnemen? Dat kan! Ik ben te bereiken op een van de onderstaande platformen.</p>
                                     <div class="contact-options">
                                         @for ($i = 0; $i < 3; $i++)
                                             <div class="option-mail flex my-10 space-x-4">
@@ -157,7 +172,7 @@
                                     </div>
                                 </div>
                                 <div class="contact-form">
-                                    <h2 class="font-bold mb-4 heading">Stuur een berichtje</h2>
+                                    <h2 class="font-bold mb-4 gilroy text-4xl xl:text-4xl lg:text-4xl md:text-4xl sm:text-4xl">Stuur een berichtje</h2>
                                     <form action="" method="post" class="submit-contact">
                                         <div class="flex flex-wrap -mx-3 mb-6">
                                             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -185,7 +200,7 @@
                                                 <textarea class="appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="grid-last-name" type="text">Maak er wat moois van!</textarea>
                                             </div>
                                             <div class="w-full p-3">
-                                                <button type="submit" id="" class="submit-contact-button inline-flex items-center rounded-lg px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
+                                                <button type="submit" id="" class="submit-contact-button inline-flex items-center rounded-lg px-4 py-2 border border-transparent text-base leading-6 rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
                                                    <span class="button-loader hidden">
                                                        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
