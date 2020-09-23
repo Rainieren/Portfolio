@@ -85,7 +85,7 @@
                     Button
                 </button>
                 @for ($i = 0; $i < 4; $i++)
-                    
+
                     <button class="bg-none hover:bg-indigo-600 text-black hover:text-white font-bold py-2 px-4 rounded-full">
                         Button
                     </button>
