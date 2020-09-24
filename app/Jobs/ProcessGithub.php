@@ -7,6 +7,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use GrahamCampbell\GitHub\Facades\GitHub;
+use GrahamCampbell\GitHub\GitHubManager;
+use Illuminate\Support\Facades\DB;
 
 class ProcessGithub implements ShouldQueue
 {
@@ -14,12 +17,10 @@ class ProcessGithub implements ShouldQueue
 
     /**
      * Create a new job instance.
-     *
-     * @return void
      */
     public function __construct()
     {
-        //
+
     }
 
     /**
@@ -29,6 +30,20 @@ class ProcessGithub implements ShouldQueue
      */
     public function handle()
     {
-        //
+        $repos = GitHub::connection('main')->me()->repositories();
+
+        foreach($repos as $repo) {
+            DB::table('projects')
+                ->updateOrInsert(
+                    ['name' => $repo["name"]],
+                    [
+                        'name' => $repo["name"],
+                        'html_url' => $repo["html_url"],
+                        'description' => $repo["description"],
+                        'stargazers_count' => $repo["stargazers_count"],
+                        'language' => $repo["language"],
+                    ]
+                );
+        }
     }
 }
