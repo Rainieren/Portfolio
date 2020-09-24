@@ -130,7 +130,6 @@
                                     <p class="text-gray-600 text-sm font-bold">{{ $project->language }}</p>
                                 </div>
                             </div>
-                                {{--                                <div class="animate-pulse h-4 bg-gray-400 rounded w-1/4"></div>--}}
                             <div class="project-description flex-2 space-y-4 py-3 h-full">
                                 <p>{!! \Illuminate\Support\Str::limit($project->description, $limit = 125, $end = '...') !!}</p>
                             </div>
@@ -238,5 +237,19 @@
             <p class="text-gray-600">@ 2020 Rainier Laan, Alle rechten voorbehouden</p>
         </div>
     </footer>
+
+    <div class="overlay contact-confirmation fixed w-full h-full bg-gray-800 bg-opacity-75 top-0 left-0 flex items-center justify-center hidden z-10">
+        <div class="relative rounded overflow-hidden shadow-lg bg-white hidden confirmation-card m-5 w-2/6">
+            <div class="p-6">
+                <div class="font-bold gilroy text-3xl mb-2">Gelukt! <i class="em em-tada" aria-role="presentation" aria-label="PARTY POPPER"></i></div>
+                <p class="text-gray-700 text-sm md:text-base lg:text-base xl:text-base">
+                    Mijn mailbox is echt ontzettend blij dat je deze stap hebt ondernomen! Je kan binnen 24 uur een reactie terug verwachten!
+                    Ondertussen zou je ook zo'n mooie website kunnen bouwen. Of je kan piano leren spelen. Je kan echt heel veel doen in 24 uur!
+                </p>
+                <p class="font-bold text-lg my-5">Dit scherm verdwijnd vanzelf in: 10</p>
+            </div>
+            <button class="absolute top-0 right-0 close-confirmation-card p-4 font-bold text-gray-600">×</button>
+        </div>
+    </div>
 @endsection
 
