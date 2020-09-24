@@ -102,58 +102,60 @@
             </div>
             <div class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-12 gap-5 my-5">
                 <button class="bg-indigo-600 hover:bg-indigo-700 text-white hover:text-white font-bold py-2 px-4 rounded-full">
-                    Button
+                    All
                 </button>
-                @for ($i = 0; $i < 4; $i++)
 
-                    <button class="bg-none hover:bg-indigo-600 text-black hover:text-white font-bold py-2 px-4 rounded-full transition duration-150 ease-in-out">
-                        Button
+                @foreach($projects->unique('language')->pluck('language') as $language)
+                    <button class="bg-none hover:bg-indigo-600 text-black hover:text-white font-bold py-2 px-4 rounded-full transition duration-150 ease-in-out focus:outline-none">
+                        {{ $language  }}
                     </button>
-                @endfor
+                @endforeach
             </div>
 
             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 my-10 gap-10">
-                @for ($i = 0; $i < 6; $i++)
-                    <div class="rounded bg-gray-100 overflow-hidden shadow-lg rounded-lg">
+                @foreach($projects as $project)
+                    <div class="rounded bg-gray-100 overflow-hidden shadow-lg rounded-lg flex flex-col relative">
                         <img class="w-full" src="https://tailwindcss.com/img/card-top.jpg" alt="Sunset in the mountains">
-                        <div class="px-6 py-4">
-                            <div class="flex justify-between  py-1">
-                                <div class="animate-pulse h-4 bg-gray-800 rounded w-3/6"></div>
-                                <div class="animate-pulse h-4 bg-yellow-600 rounded w-1/6"></div>
-                            </div>
-                            <div class="flex-1 space-y-4 py-1">
-                                <div class="animate-pulse h-4 bg-gray-500 rounded w-1/6"></div>
-                            </div>
-                                {{--                                <div class="animate-pulse h-4 bg-gray-400 rounded w-1/4"></div>--}}
-                            <div class="flex-2 space-y-4 py-1">
-                                <div class="space-y-2">
-                                    <div class="animate-pulse h-4 bg-gray-400 rounded w-4/4"></div>
-                                    <div class="animate-pulse h-4 bg-gray-400 rounded w-3/4"></div>
-                                    <div class="animate-pulse h-4 bg-gray-400 rounded w-4/4"></div>
+                        <div class="px-6 py-4 h-full flex flex-col">
+                            <div class="project-info flex justify-between pt-1">
+                                <div class="flex w-5/6">
+                                    <p class="font-bold gilroy text-xl">{{ $project->name }}</p>
+                                </div>
+                                <div class="flex justify-end w-1/6">
+                                    {{ $project->stargazers_count }}
                                 </div>
                             </div>
-                            <div class="read-more my-3">
-                                <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out hover:text-indigo-900 read-more-button" data-target-project="{{ $i + 1 }}">Lees meer</button>
+                            <div class="project-language flex-1">
+                                <div class="w-full">
+                                    <p class="text-gray-600 text-sm font-bold">{{ $project->language }}</p>
+                                </div>
+                            </div>
+                                {{--                                <div class="animate-pulse h-4 bg-gray-400 rounded w-1/4"></div>--}}
+                            <div class="project-description flex-2 space-y-4 py-3 h-full">
+                                <p>{!! \Illuminate\Support\Str::limit($project->description, $limit = 125, $end = '...') !!}</p>
+                            </div>
+                            <div class="read-more mt-auto">
+                                <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out hover:text-indigo-900 read-more-button" data-target-project="{{ $project->name }}">Lees meer</button>
                             </div>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </section>
 
     <div class="overlay fixed w-full h-full bg-gray-800 bg-opacity-75 top-0 left-0 flex items-center justify-center hidden z-10 close-project">
-        @for ($i = 0; $i < 6; $i++)
-            <div class="relative rounded overflow-hidden shadow-lg bg-white hidden project-card project-{{ $i + 1 }} m-5" data-target-modal="{{ $i + 1 }}">
+        @foreach($projects as $project)
+            <div class="relative rounded overflow-hidden shadow-lg bg-white hidden project-card project-{{ $project->name }} m-5" data-target-modal="{{ $project->name }}">
                 <div class="p-6">
-                    <div class="font-bold gilroy text-3xl mb-2">The Coldest Sunset {{ $i + 1 }}</div>
+                    <div class="font-bold gilroy text-3xl mb-2">{{ $project->name }}</div>
                     <p class="text-gray-700 text-sm md:text-base lg:text-base xl:text-base">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                        {{ $project->description }}
                     </p>
                 </div>
-                <button class="absolute top-0 right-0 close-project p-4 font-bold text-gray-600" data-target-project="{{ $i + 1 }}">×</button>
+                <button class="absolute top-0 right-0 close-project p-4 font-bold text-gray-600" data-target-project="{{ $project->name }}">×</button>
             </div>
-        @endfor
+        @endforeach
     </div>
 
     <footer class="section-contact footer relative ">

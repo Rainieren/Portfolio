@@ -11,16 +11,18 @@
     <body class="antialiased" id="app">
         <nav class=" flex items-center bg-gray-200 justify-between flex-wrap p-5 sm:p-5 md:p-5 lg:px-0 xl:px-0 shadow-lg">
             <div class="container mx-auto">
-                <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
-                    <div class="text-black inline-flex justify-between items-center">
-                        <a href="/"><span class="font-semibold text-xl">Rainier La<span class="text-indigo-600">an</span></span></a>
-                        <div class="inline-flex justify-end md:hidden">
+                <div class="flex flex-col lg:flex-row">
+                    <div class="flex w-full lg:w-1/4">
+                        <div class="text-black lg:w-auto w-2/4 flex justify-between items-center">
+                            <a href="/"><span class="font-semibold text-xl">Rainier La<span class="text-indigo-600">an</span></span></a>
+                        </div>
+                        <div class="flex lg:w-auto w-2/4 justify-end lg:hidden">
                             <button id="nav-collapse" class="flex items-center px-3 py-2 text-xl rounded text-black hover:text-black focus:outline-none">
                                 <svg class="fill-current h-5 w-5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
                             </button>
                         </div>
                     </div>
-                    <div id="nav-content" class="text-right hidden items-center md:flex">
+                    <div id="nav-content" class="hidden lg:flex w-full lg:w-3/4 justify-center items-center text-right">
                         <div class="text-sm lg:flex-grow">
                             <a href="#" class="transition duration-150 ease-in-out uppercase font-bold tracking-widest block mt-4 lg:inline-block lg:mt-0 text-black hover:text-indigo-600 mr-3 lg:mr-10 nav-slide" data-nav-destination="about-me">
                                 Home
