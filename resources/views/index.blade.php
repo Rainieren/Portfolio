@@ -143,7 +143,7 @@
         </div>
     </section>
 
-    <div class="overlay fixed w-full h-full bg-gray-800 bg-opacity-75 top-0 left-0 flex items-center justify-center hidden z-10 close-project">
+    <div class="overlay project-overlay fixed w-full h-full bg-gray-800 bg-opacity-75 top-0 left-0 flex items-center justify-center hidden z-10 close-project">
         @foreach($projects as $project)
             <div class="relative rounded overflow-hidden shadow-lg bg-white hidden project-card project-{{ $project->name }} m-5" data-target-modal="{{ $project->name }}">
                 <div class="p-6">

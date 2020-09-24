@@ -10,7 +10,7 @@ $(document).ready(function() {
     });
     function openProjectModal($project) {
         $('html body').addClass("overflow-hidden");
-        $('.overlay').removeClass('hidden')
+        $('.overlay.project-overlay').removeClass('hidden')
         let destination = $('.project-' + $project);
         destination.removeClass('hidden').delay(500).addClass('animate__animated animate__zoomIn animate__faster active-modal')
     }
@@ -25,7 +25,7 @@ $(document).ready(function() {
         setTimeout(function () {
             destination.addClass("hidden");
             destination.removeClass("animate__animated animate__faster animate__zoomOut");
-            $('.overlay').delay(300).addClass('hidden')
+            $('.overlay.project-overlay').delay(300).addClass('hidden')
         }, 300)
         $('html body').removeClass("overflow-hidden");
     }
