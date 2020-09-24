@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Rainierlaan's portfolio</title>
+    <title>Rainier Laan</title>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/emoji.min.css') }}" rel="stylesheet">
@@ -13,7 +13,7 @@
             <div class="container mx-auto">
                 <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
                     <div class="text-black inline-flex justify-between items-center">
-                        <a href="/"><span class="font-semibold text-xl">Portfoli<span class="text-indigo-600">o</span></span></a>
+                        <a href="/"><span class="font-semibold text-xl">Rainier La<span class="text-indigo-600">an</span></span></a>
                         <div class="inline-flex justify-end md:hidden">
                             <button id="nav-collapse" class="flex items-center px-3 py-2 text-xl rounded text-black hover:text-black focus:outline-none">
                                 <svg class="fill-current h-5 w-5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>

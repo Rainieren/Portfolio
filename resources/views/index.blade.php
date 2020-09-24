@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="section-about-me p-5 md:p-5 lg:p-10 xl:p-10 bg-gray-200 flex items-center" style="min-height: calc(100vh - 70px);">
+    <section class="section-about-me p-5 md:p-5 lg:p-10 xl:p-10 bg-gray-200 flex items-center relative" style="min-height: 100vh;">
         <div class="container mx-auto">
-            <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 px-5 sm:px-5 md:px-0 lg:px-0 xl:px-0 gap-5">
+            <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 px-5 sm:px-5 md:px-0 lg:px-0 xl:px-0 gap-5" >
                 <div class="introduction">
-                    <h1 class="font-bold">Over mij</h1>
+                    <h1 class="font-bold">Rainier Laan</h1>
                     <div class="line h-1 bg-indigo-600 w-24 rounded-full"></div>
                     <div class="text my-5">
                         <p class="text-gray-800">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aspernatur aut consectetur corporis delectus eius est facere iure iusto minus nam odit quas sint soluta, tempora tempore vitae voluptas.</p>
@@ -51,7 +51,12 @@
                         @for ($i = 0; $i < 4; $i++)
                             <div class="space-y-2 my-5">
                                 <div class="animate-pulse h-4 bg-gray-700 rounded w-2/4"></div>
+                            </div>
+                            <div class="flex justify-between my-5">
                                 <div class="animate-pulse h-4 bg-gray-400 rounded w-1/4"></div>
+                                <div class="animate-pulse h-4 bg-gray-400 rounded w-1/4"></div>
+                            </div>
+                            <div class="space-y-2 my-5">
                                 <div class="animate-pulse h-4 bg-gray-400 rounded w-3/4"></div>
                             </div>
                         @endfor
@@ -93,7 +98,7 @@
     <section class="section-projects bg-gray-200 p-5 md:p-5 lg:p-10 xl:p-10">
         <div class="container mx-auto">
             <div class="grid grid-cols-1">
-                <p class="font-bold mb-4 gilroy text-4xl xl:text-4xl lg:text-4xl md:text-4xl sm:text-4xl">Mijn projecten</p>
+                <p class="font-bold mb-4 gilroy text-4xl xl:text-4xl lg:text-4xl md:text-4xl sm:text-4xl">Mijn projecten <span class="text-gray-400 w-full block md:w-auto md:inline text-xs font-normal">Fetched from GitHub</span></p>
             </div>
             <div class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-12 gap-5 my-5">
                 <button class="bg-indigo-600 hover:bg-indigo-700 text-white hover:text-white font-bold py-2 px-4 rounded-full">
@@ -109,11 +114,18 @@
 
             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 my-10 gap-10">
                 @for ($i = 0; $i < 6; $i++)
-                    <div class="rounded bg-white overflow-hidden shadow-lg rounded-lg">
+                    <div class="rounded bg-gray-100 overflow-hidden shadow-lg rounded-lg">
                         <img class="w-full" src="https://tailwindcss.com/img/card-top.jpg" alt="Sunset in the mountains">
                         <div class="px-6 py-4">
+                            <div class="flex justify-between  py-1">
+                                <div class="animate-pulse h-4 bg-gray-800 rounded w-3/6"></div>
+                                <div class="animate-pulse h-4 bg-yellow-600 rounded w-1/6"></div>
+                            </div>
                             <div class="flex-1 space-y-4 py-1">
-                                <div class="animate-pulse h-4 bg-gray-400 rounded w-2/4"></div>
+                                <div class="animate-pulse h-4 bg-gray-500 rounded w-1/6"></div>
+                            </div>
+                                {{--                                <div class="animate-pulse h-4 bg-gray-400 rounded w-1/4"></div>--}}
+                            <div class="flex-2 space-y-4 py-1">
                                 <div class="space-y-2">
                                     <div class="animate-pulse h-4 bg-gray-400 rounded w-4/4"></div>
                                     <div class="animate-pulse h-4 bg-gray-400 rounded w-3/4"></div>
@@ -121,7 +133,7 @@
                                 </div>
                             </div>
                             <div class="read-more my-3">
-                                <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out hover:text-indigo-900 read-more-button" data-target-project="{{ $i + 1 }}">Lees meer {{ $i + 1 }}</button>
+                                <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out hover:text-indigo-900 read-more-button" data-target-project="{{ $i + 1 }}">Lees meer</button>
                             </div>
                         </div>
                     </div>
