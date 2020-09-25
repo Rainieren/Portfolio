@@ -25705,6 +25705,19 @@ h6 {
   font-family: "Gilroy ExtraBold";
 }
 
+.read-more-arrow {
+  transition: 0.3s all;
+}
+
+.read-more-button:hover {
+  transition: 0.3s all;
+}
+
+.read-more-button:hover .read-more-arrow {
+  transition: 0.3s all;
+  margin-left: 1rem;
+}
+
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;

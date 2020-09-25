@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $('.cookie-popup').removeClass('hidden').addClass('animate__animated animate__fadeInUp');
     $('.nav-slide').on('click', function() {
         let data = 'nav-destination';
         if($(this).data(data)) {
@@ -44,8 +45,7 @@ $(document).ready(function() {
         $('.submit-contact-button span:first-child').removeClass('hidden');
         $('.submit-button-text').text('Verwerken');
         setTimeout(function () {
-            $('.overlay.contact-confirmation').removeClass('hidden');
-            $('.confirmation-card').removeClass('hidden').delay(500).addClass('animate__animated animate__zoomIn animate__faster active-modal')
+
         }, 1500)
 
 

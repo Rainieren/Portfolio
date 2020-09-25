@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\UpdateGithub',
+        'App\Console\Commands\FetchGithubRepositories',
     ];
 
     /**
@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-//         $schedule->job(new ProcessGithub)->everyMinute();
-            $schedule->command('update:github')->everyMinute();
+         $schedule->job(new ProcessGithub)->everyMinute();
+//            $schedule->command('update:github')->everyMinute();
     }
 
     /**

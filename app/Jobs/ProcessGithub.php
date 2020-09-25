@@ -37,7 +37,7 @@ class ProcessGithub implements ShouldQueue
                 ->updateOrInsert(
                     ['name' => $repo["name"]],
                     [
-                        'name' => $repo["name"],
+                        'name' => str_replace(".", "-", $repo["name"]),
                         'html_url' => $repo["html_url"],
                         'description' => $repo["description"],
                         'stargazers_count' => $repo["stargazers_count"],
