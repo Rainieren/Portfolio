@@ -41,13 +41,13 @@ class FetchGithubRepositories extends Command
      */
     public function handle()
     {
-        \Log::info("Wordt uitgevoerd");
         $repos = GitHub::connection('main')->me()->repositories();
-
-        Project::whereNotIn('html_url', $repos)->delete();
+        $existingRepos = [];
 
         foreach($repos as $repo) {
             $name = str_replace(".", "-", $repo["name"]);
+            $existingRepos[] = $name;
+
             DB::table('projects')
                 ->updateOrInsert(
                     ['name' => $name],
@@ -59,7 +59,7 @@ class FetchGithubRepositories extends Command
                         'language' => $repo["language"],
                     ]
                 );
-            // TODO::Als er minder entries zijn dan in de database staan. Verwijder dan de gene die niet in de lijst staat. Dat betekend namelijk dat er een repo verwijderd is.
         }
+        Project::whereNotIn('name', $existingRepos)->delete();
     }
 }
