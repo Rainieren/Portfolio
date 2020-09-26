@@ -48,17 +48,21 @@ class FetchGithubRepositories extends Command
             $name = str_replace(".", "-", $repo["name"]);
             $existingRepos[] = $name;
 
-            DB::table('projects')
-                ->updateOrInsert(
-                    ['name' => $name],
-                    [
-                        'name' => $name,
-                        'html_url' => $repo["html_url"],
-                        'description' => $repo["description"],
-                        'stargazers_count' => $repo["stargazers_count"],
-                        'language' => $repo["language"],
-                    ]
-                );
+            if($repo['language']) {
+                DB::table('projects')
+                    ->updateOrInsert(
+                        ['name' => $name],
+                        [
+                            'name' => $name,
+                            'html_url' => $repo["html_url"],
+                            'description' => $repo["description"],
+                            'stargazers_count' => $repo["stargazers_count"],
+                            'language' => $repo["language"],
+                        ]
+                    );
+            }
+
+
         }
         Project::whereNotIn('name', $existingRepos)->delete();
     }
