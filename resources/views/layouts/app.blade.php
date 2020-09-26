@@ -33,6 +33,9 @@
                             <a href="#" class="transition duration-150 ease-in-out uppercase font-bold tracking-widest block mt-4 lg:inline-block lg:mt-0 text-black hover:text-indigo-600 mr-3 lg:mr-10 nav-slide" data-nav-destination="projects">
                                 Projecten
                             </a>
+                            <a href="#" class="transition duration-150 ease-in-out uppercase font-bold tracking-widest block mt-4 lg:inline-block lg:mt-0 text-black hover:text-indigo-600 mr-3 lg:mr-10 nav-slide" data-nav-destination="services">
+                                Diensten
+                            </a>
                             <a href="#" class="transition duration-150 ease-in-out uppercase font-bold tracking-widest block mt-4 lg:inline-block lg:mt-0 text-black hover:text-indigo-600 mr-3 lg:mr-10 nav-slide" data-nav-destination="contact">
                                 Contact
                             </a>

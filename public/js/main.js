@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $('.cookie-popup').removeClass('hidden').addClass('animate__animated animate__fadeInUp');
     $('.nav-slide').on('click', function() {
         let data = 'nav-destination';
         if($(this).data(data)) {
@@ -10,7 +11,7 @@ $(document).ready(function() {
     });
     function openProjectModal($project) {
         $('html body').addClass("overflow-hidden");
-        $('.overlay').removeClass('hidden')
+        $('.overlay.project-overlay').removeClass('hidden')
         let destination = $('.project-' + $project);
         destination.removeClass('hidden').delay(500).addClass('animate__animated animate__zoomIn animate__faster active-modal')
     }
@@ -25,7 +26,7 @@ $(document).ready(function() {
         setTimeout(function () {
             destination.addClass("hidden");
             destination.removeClass("animate__animated animate__faster animate__zoomOut");
-            $('.overlay').delay(300).addClass('hidden')
+            $('.overlay.project-overlay').delay(300).addClass('hidden')
         }, 300)
         $('html body').removeClass("overflow-hidden");
     }
@@ -44,8 +45,7 @@ $(document).ready(function() {
         $('.submit-contact-button span:first-child').removeClass('hidden');
         $('.submit-button-text').text('Verwerken');
         setTimeout(function () {
-            $('.overlay.contact-confirmation').removeClass('hidden');
-            $('.confirmation-card').removeClass('hidden').delay(500).addClass('animate__animated animate__zoomIn animate__faster active-modal')
+
         }, 1500)
 
 
