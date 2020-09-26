@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Project;
 use GrahamCampbell\GitHub\Facades\GitHub;
+use GrahamCampbell\GitHub\GitHubManager;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -20,7 +22,7 @@ class FetchGithubRepositories extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Fetch and updating changes repositories from GitHub';
 
     /**
      * Create a new command instance.
@@ -39,6 +41,25 @@ class FetchGithubRepositories extends Command
      */
     public function handle()
     {
-        //
+        \Log::info("Wordt uitgevoerd");
+        $repos = GitHub::connection('main')->me()->repositories();
+
+        Project::whereNotIn('html_url', $repos)->delete();
+
+        foreach($repos as $repo) {
+            $name = str_replace(".", "-", $repo["name"]);
+            DB::table('projects')
+                ->updateOrInsert(
+                    ['name' => $name],
+                    [
+                        'name' => $name,
+                        'html_url' => $repo["html_url"],
+                        'description' => $repo["description"],
+                        'stargazers_count' => $repo["stargazers_count"],
+                        'language' => $repo["language"],
+                    ]
+                );
+            // TODO::Als er minder entries zijn dan in de database staan. Verwijder dan de gene die niet in de lijst staat. Dat betekend namelijk dat er een repo verwijderd is.
+        }
     }
 }
