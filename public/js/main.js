@@ -40,7 +40,7 @@ $(document).ready(function() {
         $('#nav-content').slideToggle();
     })
 
-    $('.submit-contact').on('submit', function(e)  {
+    $('.submit-contact').on('submit', function(e) {
         e.preventDefault();
         $.ajaxSetup({
             headers: {
@@ -49,27 +49,27 @@ $(document).ready(function() {
         });
         $('.submit-contact-button span:first-child').removeClass('hidden');
         $('.submit-button-text').text('Verwerken');
-        e.preventDefault()
-    });
 
         $.ajax({
             url: '/message/store',
             type: 'POST',
             data: $(this).serialize(),
-            success: function(data){
+            success: function (data) {
                 $('.submit-contact-button .button-loader').addClass('hidden');
                 $('.submit-contact-button .button-success').removeClass('hidden');
                 $('.submit-button-text').text('Verstuurd!');
                 $('.submit-contact').trigger("reset");
-                setInterval(function() {
+                setInterval(function () {
                     $('.submit-contact-button .button-success').addClass('hidden');
                     $('.submit-button-text').text('Versturen');
-                },5000)
+                }, 5000)
             },
-            error: function(data) {
+            error: function (data) {
                 alert("fail")
             }
         });
+    });
+    
     $('.language-filter-button').on('click', function() {
         let card = $('.project-card');
         let language = $(this).data('language');
