@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use http\Message;
+use App\Models\Message;
 use Illuminate\Http\Request;
+use ReCaptcha\ReCaptcha;
+use Illuminate\Support\Facades\Validator;
 
 class MessageController extends Controller
 {
@@ -35,9 +37,19 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request);
-        \App\Models\Message::create($request->all());
-//        $input = $request->all();
+        $validateData = Validator::make($request->all(), [
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required',
+            'reason' => 'required|not_in:0',
+            'message' => 'required',
+        ]);
+
+        if ($validateData->fails()) {
+            return redirect(url()->previous() .'#contact-form')->withErrors($validateData)->withInput();
+        }
+        Message::create($request->all());
+
         // TODO:: Add new message functionality with email sender and database entries, using Ajax ofcourse
 
         return redirect('/');
