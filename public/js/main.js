@@ -41,15 +41,27 @@ $(document).ready(function() {
     })
 
     $('.submit-contact').on('submit', function(e)  {
-        // e.preventDefault();
-        // $('.submit-contact-button span:first-child').removeClass('hidden');
-        // $('.submit-button-text').text('Verwerken');
-        // setTimeout(function () {
-        //     $('.overlay.contact-confirmation').removeClass('hidden');
-        //     $('.confirmation-card').removeClass('hidden').delay(500).addClass('animate__animated animate__zoomIn animate__faster active-modal')
-        // }, 1500)
-
-
+        e.preventDefault();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('.submit-contact-button span:first-child').removeClass('hidden');
+        $('.submit-button-text').text('Verwerken');
+        $.ajax({
+            url: '/message/store',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(data){
+                $('.submit-contact-button .button-loader').addClass('hidden');
+                $('.submit-contact-button .button-success').removeClass('hidden');
+                $('.submit-button-text').text('Verstuurd!');
+                setInterval(function() {
+                    $('.submit-contact-button .button-success').addClass('hidden');
+                    $('.submit-button-text').text('Versturen');
+                },10000)
+            }
+        });
     });
-
 });
