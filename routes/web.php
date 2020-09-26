@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\MessageController;
 use \App\Models\Project;
 
 /*
@@ -20,4 +21,4 @@ Route::get('/', function () {
     return view('index', compact('projects'));
 });
 
-Route::get('/github', [ProjectController::class, 'index']);
+Route::post('/message/store', [MessageController::class, 'store'])->name('store_message');

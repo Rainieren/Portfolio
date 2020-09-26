@@ -41,12 +41,13 @@ $(document).ready(function() {
     })
 
     $('.submit-contact').on('submit', function(e)  {
-        e.preventDefault();
-        $('.submit-contact-button span:first-child').removeClass('hidden');
-        $('.submit-button-text').text('Verwerken');
-        setTimeout(function () {
-
-        }, 1500)
+        // e.preventDefault();
+        // $('.submit-contact-button span:first-child').removeClass('hidden');
+        // $('.submit-button-text').text('Verwerken');
+        // setTimeout(function () {
+        //     $('.overlay.contact-confirmation').removeClass('hidden');
+        //     $('.confirmation-card').removeClass('hidden').delay(500).addClass('animate__animated animate__zoomIn animate__faster active-modal')
+        // }, 1500)
 
 
     });
