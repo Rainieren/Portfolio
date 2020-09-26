@@ -223,8 +223,8 @@
                                                 <div class="relative">
                                                     <select name="reason" class="@error('reason') border-red-500 @enderror appearance-none w-full bg-gray-200 border border-gray-200 focus:bg-gray-300 focus:border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none" id="grid-state">
                                                         <option value="">Selecteer een reden...</option>
-                                                        <option value="talk">Gewoon lekker babbelen</option>
-                                                        <option value="request">Een opdrachten</option>
+                                                        <option value="talk">Hoi zeggen</option>
+                                                        <option value="request">Een opdracht</option>
                                                         <option value="other">Anders, namelijk</option>
                                                     </select>
                                                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -239,7 +239,7 @@
                                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                                     Bericht
                                                 </label>
-                                                <textarea name="message" class="@error('message') appearance-none border border-red-500 @enderror appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="grid-last-name" type="text">{{ old('message') }}</textarea>
+                                                <textarea name="message" rows="4" class="@error('message') appearance-none border border-red-500 @enderror appearance-none block resize-none rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="grid-last-name" placeholder="Waar zit je aan te denken?" type="text">{{ old('message') }}</textarea>
                                                 @error('message')
                                                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                                                 @enderror

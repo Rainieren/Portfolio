@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewMessageNotification;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use ReCaptcha\ReCaptcha;
 use Illuminate\Support\Facades\Validator;
 
@@ -49,6 +51,8 @@ class MessageController extends Controller
             return redirect(url()->previous() .'#contact-form')->withErrors($validateData)->withInput();
         }
         Message::create($request->all());
+
+        Mail::to('rainier.laan@home.nl')->send(new NewMessageNotification($request->all()));
 
         // TODO:: Add new message functionality with email sender and database entries, using Ajax ofcourse
 
