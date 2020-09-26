@@ -106,7 +106,7 @@
                     All
                 </button>
                 @foreach($projects->unique('language')->pluck('language') as $language)
-                    <button id="{{ $language }}" class="bg-none hover:bg-indigo-600 text-black hover:text-white font-bold py-2 px-4 rounded-full transition duration-150 ease-in-out focus:outline-none">
+                    <button class="language-filter-button bg-none hover:bg-indigo-600 text-black hover:text-white font-bold py-2 px-4 rounded-full transition duration-150 ease-in-out focus:outline-none" data-language="{{ $language }}">
                         {{ $language  }}
                     </button>
                 @endforeach
@@ -136,7 +136,7 @@
 
             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 my-10 gap-10">
                 @foreach($projects as $project)
-                    <div class="project rounded bg-gray-100 overflow-hidden shadow-lg rounded-lg flex flex-col relative">
+                    <div class="project-card {{ $project->language }} rounded bg-gray-100 overflow-hidden shadow-lg rounded-lg flex flex-col relative" data-language="{{ $project->language }}">
                         <img class="w-full" src="https://techcrunch.com/wp-content/uploads/2015/04/codecode.jpg" alt="Sunset in the mountains">
                         <div class="px-6 py-4 h-full flex flex-col">
 
@@ -174,7 +174,7 @@
 
     <div class="overlay project-overlay fixed w-full h-full bg-gray-800 bg-opacity-75 top-0 left-0 flex items-center justify-center hidden z-10 close-project">
         @foreach($projects as $project)
-            <div class="relative rounded overflow-hidden shadow-lg bg-white hidden project-card project-{{ $project->name }} m-5" data-target-modal="{{ $project->name }}">
+            <div class="relative rounded overflow-hidden shadow-lg bg-white hidden project-{{ $project->name }} m-5" data-target-modal="{{ $project->name }}">
                 <div class="p-6">
                     <div class="font-bold gilroy text-3xl mb-2">{{ $project->name }}</div>
                     <p class="text-gray-700 text-sm md:text-base lg:text-base xl:text-base mb-5">
