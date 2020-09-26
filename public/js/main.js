@@ -49,6 +49,8 @@ $(document).ready(function() {
         });
         $('.submit-contact-button span:first-child').removeClass('hidden');
         $('.submit-button-text').text('Verwerken');
+        e.preventDefault()
+    });
 
         $.ajax({
             url: '/message/store',
@@ -68,5 +70,19 @@ $(document).ready(function() {
                 alert("fail")
             }
         });
+    $('.language-filter-button').on('click', function() {
+        let card = $('.project-card');
+        let language = $(this).data('language');
+
+        card.show();
+        if(language === 'all') {
+            card.show();
+        } else {
+            card.each(function () {
+                if(!$(this).hasClass(language)) {
+                    $(this).hide();
+                }
+            });
+        }
     });
 });

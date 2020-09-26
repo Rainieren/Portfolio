@@ -61,8 +61,6 @@ class FetchGithubRepositories extends Command
                         ]
                     );
             }
-
-
         }
         Project::whereNotIn('name', $existingRepos)->delete();
     }
