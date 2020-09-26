@@ -54,8 +54,6 @@ class MessageController extends Controller
 
         Mail::to('rainier.laan@home.nl')->send(new NewMessageNotification($request->all()));
 
-        // TODO:: Add new message functionality with email sender and database entries, using Ajax ofcourse
-
         return redirect('/');
     }
 

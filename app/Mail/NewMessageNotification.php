@@ -32,7 +32,7 @@ class NewMessageNotification extends Mailable
     {
         return $this->from('mail@example.com', 'Mailtrap')
             ->subject('Nieuw bericht van ' . $this->request['firstname'])
-            ->markdown('mails.exmpl')
+            ->markdown('mails.newMessage')
             ->with([
                 'firstname' => $this->request['firstname'],
                 'lastname' => $this->request['lastname'],
