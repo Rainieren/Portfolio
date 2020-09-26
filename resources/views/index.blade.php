@@ -106,7 +106,7 @@
                     All
                 </button>
                 @foreach($projects->unique('language')->pluck('language') as $language)
-                    <button class="bg-none hover:bg-indigo-600 text-black hover:text-white font-bold py-2 px-4 rounded-full transition duration-150 ease-in-out focus:outline-none">
+                    <button id="{{ $language }}" class="bg-none hover:bg-indigo-600 text-black hover:text-white font-bold py-2 px-4 rounded-full transition duration-150 ease-in-out focus:outline-none">
                         {{ $language  }}
                     </button>
                 @endforeach
@@ -136,7 +136,7 @@
 
             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 my-10 gap-10">
                 @foreach($projects as $project)
-                    <div class="rounded bg-gray-100 overflow-hidden shadow-lg rounded-lg flex flex-col relative">
+                    <div class="project rounded bg-gray-100 overflow-hidden shadow-lg rounded-lg flex flex-col relative">
                         <img class="w-full" src="https://techcrunch.com/wp-content/uploads/2015/04/codecode.jpg" alt="Sunset in the mountains">
                         <div class="px-6 py-4 h-full flex flex-col">
 
