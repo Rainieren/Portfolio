@@ -45,7 +45,18 @@ $(document).ready(function() {
     });
 
     $('.language-filter-button').on('click', function() {
-        alert("Add filter for " + $(this).data('language'));
-    });
+        let card = $('.project-card');
+        let language = $(this).data('language');
 
+        card.show();
+        if(language === 'all') {
+            card.show();
+        } else {
+            card.each(function () {
+                if(!$(this).hasClass(language)) {
+                    $(this).hide();
+                }
+            });
+        }
+    });
 });

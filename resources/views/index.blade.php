@@ -102,7 +102,7 @@
             </div>
 
             <div class="project-filter-options hidden md:grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-10   gap-5 my-5">
-                <button class="bg-indigo-600 hover:bg-indigo-700 text-white hover:text-white font-bold py-2 px-4 rounded-full">
+                <button class="language-filter-button bg-indigo-600 hover:bg-indigo-700 text-white hover:text-white font-bold py-2 px-4 rounded-full focus:outline-none" data-language="all">
                     All
                 </button>
                 @foreach($projects->unique('language')->pluck('language') as $language)
