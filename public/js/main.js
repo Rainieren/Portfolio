@@ -49,6 +49,7 @@ $(document).ready(function() {
         });
         $('.submit-contact-button span:first-child').removeClass('hidden');
         $('.submit-button-text').text('Verwerken');
+
         $.ajax({
             url: '/message/store',
             type: 'POST',
@@ -57,10 +58,14 @@ $(document).ready(function() {
                 $('.submit-contact-button .button-loader').addClass('hidden');
                 $('.submit-contact-button .button-success').removeClass('hidden');
                 $('.submit-button-text').text('Verstuurd!');
+                $('.submit-contact').trigger("reset");
                 setInterval(function() {
                     $('.submit-contact-button .button-success').addClass('hidden');
                     $('.submit-button-text').text('Versturen');
-                },10000)
+                },5000)
+            },
+            error: function(data) {
+                alert("fail")
             }
         });
     });
