@@ -101,7 +101,7 @@
                 <p class="font-bold mb-4 gilroy text-4xl xl:text-4xl lg:text-4xl md:text-4xl sm:text-4xl">Mijn projecten <span class="text-gray-400 w-full block md:w-auto md:inline text-xs font-normal">Synchronised with GitHub</span></p>
             </div>
 
-            <div class="project-filter-options hidden md:grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-10   gap-5 my-5">
+            <div class="project-filter-options hidden md:grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-10 gap-5 my-5">
                 <button class="language-filter-button bg-indigo-600 hover:bg-indigo-700 text-white hover:text-white font-bold py-2 px-4 rounded-full focus:outline-none" data-language="all">
                     All
                 </button>
@@ -118,11 +118,11 @@
                             Filter Language
                         </label>
                         <div class="relative">
-                            <select class="block appearance-none w-full bg-gray-300 border border-gray-200 focus:bg-gray-300 focus:border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none" id="grid-state">
-                                <option selected>All</option>
+                            <select class="language-filter-dropdown block appearance-none w-full bg-gray-300 border border-gray-200 focus:bg-gray-300 focus:border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none" id="grid-state">
+                                <option selected value="all">All</option>
                                 @foreach($projects->unique('language')->pluck('language') as $language)
                                     @if($language)
-                                        <option>{{ $language  }}</option>
+                                        <option value="{{ $language }}">{{ $language  }}</option>
                                     @endif
                                 @endforeach
                             </select>
