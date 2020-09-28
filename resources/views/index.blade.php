@@ -197,18 +197,10 @@
                     <p class="text-gray-700">Ik heb niet echt diensten maar ik kan wel heel veel dingen maken. Ben je opzoek naar een developer die jouw idee in de realiteit kan brengen? Misschien ben ik dan wel de juiste persoon!
                     Hieronder vind je een lijst van onderwerpen waar ik ervaring mee heb.</p>
                     <ol class="my-5 ml-10 list-decimal">
-                        <li class="my-1">Magento 2</li>
-                        <li class="my-1">Web applicaties (Klein & Groot)</li>
+                        <li class="my-1">Webshops (Magento 2)</li>
+                        <li class="my-1">Web applicaties</li>
                         <li class="my-1">Websites</li>
                         <li class="my-1">Apps</li>
-                        <li class="my-1">
-                            Automatisering
-                            <a href="#">
-                                <svg fill="none" viewBox="0 0 24 24" class="w-5 h-5 text-black hover:text-indigo-600 " stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            </a>
-                        </li>
                     </ol>
                     <p class="text-gray-700">Staat hetgene wat je zoekt niet tussen de lijst? Misschien kunnen we samen ergens overuit komen. Stel gerust een vraag in het contactformulier hier
                         onder en wellicht kunnen we jouw idee bespreken onder het genot van een kop koffie!</p>
@@ -318,7 +310,6 @@
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                                         </svg>
                                                     </span>
-
                                                     <span class="submit-button-text">Versturen</span>
                                                 </button>
                                             </div>
@@ -336,33 +327,6 @@
             <p class="text-gray-600">@ 2020 Rainier Laan, Alle rechten voorbehouden</p>
         </div>
     </footer>
-    <div class="cookie-popup fixed w-full hidden" style="bottom: 20px;">
-        <div class="container mx-auto">
-            <div class="py-3 pl-6 pr-3 rounded-lg bg-indigo-900 shadow-2xl">
-                <div class="flex items-center justify-between flex-wrap">
-                    <div class="w-4/6 flex items-center ">
-                        <p class="text-gray-200 truncate">
-                            <strong class="font-medium">
-                                Deze website maakt gebruik van koekjes om jou een betere website ervaring te bieden.
-                            </strong>
-                        </p>
-                    </div>
-                    <div class="flex">
-                        <div class="rounded-md shadow-sm">
-                            <a href="#" class="flex items-center justify-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded text-white hover:text-indigo-300 focus:outline-none focus:shadow-outline transition ease-in-out duration-150">
-                                Ik wil graag meer weten
-                            </a>
-                        </div>
-                        <div class="rounded-md shadow-sm">
-                            <a href="#" class="flex items-center justify-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded text-gray-900 bg-white hover:text-gray-600 focus:outline-none focus:shadow-outline transition ease-in-out duration-150">
-                                Ik accepteer de koekjes
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 @endsection

@@ -74,7 +74,7 @@ $(document).ready(function() {
             }
         });
     });
-    
+
     $('.language-filter-button').on('click', function() {
         if($(this).data('language'))
         showFilteredCards($(this).data('language'));
@@ -96,4 +96,9 @@ $(document).ready(function() {
             });
         }
     }
+
+    $('#accept-cookies').on('submit', function (e) {
+        e.preventDefault();
+        $('.cookie-popup').addClass('animate__animated animate__fadeOutDown animate__faster')
+    });
 });
