@@ -1,5 +1,9 @@
 $(document).ready(function() {
+
+    let card = $('.project-card');
+
     $('.cookie-popup').removeClass('hidden').addClass('animate__animated animate__fadeInUp');
+
     $('.nav-slide').on('click', function() {
         let data = 'nav-destination';
         if($(this).data(data)) {
@@ -9,6 +13,7 @@ $(document).ready(function() {
             }, 2000);
         }
     });
+
     function openProjectModal($project) {
         $('html body').addClass("overflow-hidden");
         $('.overlay.project-overlay').removeClass('hidden')
@@ -18,6 +23,11 @@ $(document).ready(function() {
 
     $('.read-more-button').on('click', function() {
         openProjectModal($(this).data('target-project'));
+    });
+
+    $(document).on('click', ".close-project", function(e) {
+        e.stopPropagation();
+        closeProjectModal()
     });
 
     function closeProjectModal() {
@@ -31,11 +41,6 @@ $(document).ready(function() {
         $('html body').removeClass("overflow-hidden");
     }
 
-    $(document).on('click', ".close-project", function(e) {
-        e.stopPropagation();
-        closeProjectModal()
-    });
-
     $('#nav-collapse').on('click', function () {
         $('#nav-content').slideToggle();
     })
@@ -45,9 +50,15 @@ $(document).ready(function() {
     });
 
     $('.language-filter-button').on('click', function() {
-        let card = $('.project-card');
-        let language = $(this).data('language');
+        if($(this).data('language'))
+        showFilteredCards($(this).data('language'));
+    });
 
+    $('.language-filter-dropdown').change(function () {
+        showFilteredCards($('.language-filter-dropdown option:selected').val());
+    });
+
+    function showFilteredCards(language) {
         card.show();
         if(language === 'all') {
             card.show();
@@ -58,5 +69,5 @@ $(document).ready(function() {
                 }
             });
         }
-    });
+    }
 });
