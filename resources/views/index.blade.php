@@ -135,56 +135,50 @@
             </div>
 
             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 my-10 gap-10">
-                @foreach($projects as $project)
-                    <div class="project-card {{ $project->language }} rounded bg-gray-100 overflow-hidden shadow-lg rounded-lg flex flex-col relative" data-language="{{ $project->language }}">
-                        <img class="w-full" src="https://techcrunch.com/wp-content/uploads/2015/04/codecode.jpg" alt="Sunset in the mountains">
-                        <div class="px-6 py-4 h-full flex flex-col">
-
-                            <div class="project-info block min-h-8">
-                                <div class="w-5/6 float-left">
-                                    <p class="font-bold gilroy text-xl">{{ $project->name }}</p>
-                                </div>
-                                <div class="flex w-1/6 float-right items-center justify-end">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 mr-2 text-yellow-600">
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    {{ $project->stargazers_count }}
-                                </div>
+                <div v-if="projects" v-for="project in projects" class="project-card rounded bg-gray-100 overflow-hidden shadow-lg rounded-lg flex flex-col relative">
+                    <img class="w-full" src="https://techcrunch.com/wp-content/uploads/2015/04/codecode.jpg" alt="Sunset in the mountains">
+                    <div class="px-6 py-4 h-full flex flex-col">
+                        <div class="project-info block min-h-8">
+                            <div class="w-5/6 float-left">
+                                <p class="font-bold gilroy text-xl">@{{ project.name }}</p>
                             </div>
-
-                            <div class="project-language flex-1">
-                                <div class="w-full">
-                                    <p class="text-gray-600 text-sm font-bold">{{ $project->language }}</p>
-                                </div>
-                            </div>
-                            <div class="project-description flex-2 space-y-4 py-3 h-full">
-                                <p>{!! \Illuminate\Support\Str::limit($project->description, $limit = 125, $end = '...') !!}</p>
-                            </div>
-                            <div class="read-more mt-auto">
-                                <button type="button" class="font-bold text-sm text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out hover:text-indigo-900 read-more-button flex items-center focus:outline-none" data-target-project="{{ $project->name }}">
-                                    Lees meer <span class="read-more-arrow ml-2">→</span>
-                                </button>
+                            <div class="flex w-1/6 float-right items-center justify-end">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 mr-2 text-yellow-600">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                @{{ project.stargazers_count }}
                             </div>
                         </div>
+                        <div class="project-language flex-1">
+                            <div class="w-full">
+                                <p class="text-gray-600 text-sm font-bold">@{{ project.language }}</p>
+                            </div>
+                        </div>
+                        <div class="project-description flex-2 space-y-4 py-3 h-full">
+                            <p>@{{ project.description }}</p>
+                        </div>
+                        <div class="read-more mt-auto">
+                            <button type="button" class="font-bold text-sm text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out hover:text-indigo-900 read-more-button flex items-center focus:outline-none">
+                                Lees meer <span class="read-more-arrow ml-2">→</span>
+                            </button>
+                        </div>
                     </div>
-                @endforeach
+                </div>
             </div>
         </div>
     </section>
 
     <div class="overlay project-overlay fixed w-full h-full bg-gray-800 bg-opacity-75 top-0 left-0 flex items-center justify-center hidden z-10 close-project">
-        @foreach($projects as $project)
-            <div class="relative rounded overflow-hidden shadow-lg bg-white hidden project-{{ $project->name }} m-5" data-target-modal="{{ $project->name }}">
-                <div class="p-6">
-                    <div class="font-bold gilroy text-3xl mb-2">{{ $project->name }}</div>
-                    <p class="text-gray-700 text-sm md:text-base lg:text-base xl:text-base mb-5">
-                        {{ $project->description }}
-                    </p>
-                    <a href="{{ $project->html_url }}" class="" target="_blank">Bekijk het op GitHub</a>
-                </div>
-                <button class="absolute top-0 right-0 close-project p-4 font-bold text-gray-600" data-target-project="{{ $project->name }}">×</button>
+        <div v-if="projects" v-for="project in projects" class="relative rounded overflow-hidden shadow-lg bg-white hidden m-5">
+            <div class="p-6">
+                <div class="font-bold gilroy text-3xl mb-2">@{{ project.name }}</div>
+                <p class="text-gray-700 text-sm md:text-base lg:text-base xl:text-base mb-5">
+                    @{{ project.description }}
+                </p>
+                <a href="url" class="" target="_blank">Bekijk het op GitHub</a>
             </div>
-        @endforeach
+            <button class="absolute top-0 right-0 close-project p-4 font-bold text-gray-600">×</button>
+        </div>
     </div>
 
     <section class="section-services bg-white p-5 md:p-5 lg:p-10 xl:p-10">
@@ -246,7 +240,7 @@
                                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                                                     Voornaam
                                                 </label>
-                                                <input name="firstname"  value="{{ old('firstname') }}" class="@error('firstname') border border-red-500 @enderror appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="grid-last-name" type="text" placeholder="John">
+                                                <input name="firstname"  value="{{ old('firstname') }}" class="@error('firstname') border border-red-500 @enderror appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="firstname" type="text" placeholder="John">
                                                 @error('firstname')
                                                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                                                 @enderror
@@ -255,7 +249,7 @@
                                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                                     Achternaam
                                                 </label>
-                                                <input name="lastname" value="{{ old('lastname') }}" class="@error('lastname') border border-red-500 @enderror appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="grid-last-name" type="text" placeholder="Doe">
+                                                <input name="lastname" value="{{ old('lastname') }}" class="@error('lastname') border border-red-500 @enderror appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="lastname" type="text" placeholder="Doe">
                                                 @error('lastname')
                                                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                                                 @enderror
@@ -264,7 +258,7 @@
                                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                                     E-mail
                                                 </label>
-                                                <input name="email" value="{{ old('email') }}" class="@error('email') border border-red-500 @enderror appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="grid-last-name" type="text" placeholder="Example@outlook.com">
+                                                <input name="email" value="{{ old('email') }}" class="@error('email') border border-red-500 @enderror appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="email" type="text" placeholder="Example@outlook.com">
                                                 @error('email')
                                                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                                                 @enderror
@@ -274,7 +268,7 @@
                                                     Reden voor contact
                                                 </label>
                                                 <div class="relative">
-                                                    <select name="reason" class="@error('reason') border-red-500 @enderror appearance-none w-full bg-gray-200 border border-gray-200 focus:bg-gray-300 focus:border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none" id="grid-state">
+                                                    <select name="reason" class="@error('reason') border-red-500 @enderror appearance-none w-full bg-gray-200 border border-gray-200 focus:bg-gray-300 focus:border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none" id="reason">
                                                         <option value="">Selecteer een reden...</option>
                                                         <option value="talk">Hoi zeggen</option>
                                                         <option value="request">Een opdracht</option>
@@ -292,7 +286,7 @@
                                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                                     Bericht
                                                 </label>
-                                                <textarea name="message" rows="4" class="@error('message') appearance-none border border-red-500 @enderror appearance-none block resize-none rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="grid-last-name" placeholder="Waar zit je aan te denken?" type="text">{{ old('message') }}</textarea>
+                                                <textarea name="message" rows="4" class="@error('message') appearance-none border border-red-500 @enderror appearance-none block resize-none rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="message" placeholder="Waar zit je aan te denken?" type="text">{{ old('message') }}</textarea>
                                                 @error('message')
                                                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                                                 @enderror

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\ProcessGithub;
+use App\Models\Project;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use GrahamCampbell\GitHub\GitHubManager;
 use Illuminate\Http\Request;
@@ -84,5 +85,12 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getAllProjects() {
+        return response()->json(Project::all());
     }
 }

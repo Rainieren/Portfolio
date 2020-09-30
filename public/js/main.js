@@ -75,27 +75,27 @@ $(document).ready(function() {
         });
     });
 
-    $('.language-filter-button').on('click', function() {
-        if($(this).data('language'))
-        showFilteredCards($(this).data('language'));
-    });
-
-    $('.language-filter-dropdown').change(function () {
-        showFilteredCards($('.language-filter-dropdown option:selected').val());
-    });
-
-    function showFilteredCards(language) {
-        card.show();
-        if(language === 'all') {
-            card.show();
-        } else {
-            card.each(function () {
-                if(!$(this).hasClass(language)) {
-                    $(this).hide();
-                }
-            });
-        }
-    }
+    // $('.language-filter-button').on('click', function() {
+    //     if($(this).data('language'))
+    //     showFilteredCards($(this).data('language'));
+    // });
+    //
+    // $('.language-filter-dropdown').change(function () {
+    //     showFilteredCards($('.language-filter-dropdown option:selected').val());
+    // });
+    //
+    // function showFilteredCards(language) {
+    //     card.show();
+    //     if(language === 'all') {
+    //         card.show();
+    //     } else {
+    //         card.each(function () {
+    //             if(!$(this).hasClass(language)) {
+    //                 $(this).hide();
+    //             }
+    //         });
+    //     }
+    // }
 
     $('#accept-cookies').on('submit', function (e) {
         e.preventDefault();
