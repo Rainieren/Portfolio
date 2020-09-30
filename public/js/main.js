@@ -14,32 +14,32 @@ $(document).ready(function() {
         }
     });
 
-    function openProjectModal($project) {
-        $('html body').addClass("overflow-hidden");
-        $('.overlay.project-overlay').removeClass('hidden')
-        let destination = $('.project-' + $project);
-        destination.removeClass('hidden').delay(500).addClass('animate__animated animate__zoomIn animate__faster active-modal')
-    }
+    // function openProjectModal($project) {
+    //     $('html body').addClass("overflow-hidden");
+    //     $('.overlay.project-overlay').removeClass('hidden')
+    //     let destination = $('.project-' + $project);
+    //     destination.removeClass('hidden').delay(500).addClass('animate__animated animate__zoomIn animate__faster active-modal')
+    // }
 
-    $('.read-more-button').on('click', function() {
-        openProjectModal($(this).data('target-project'));
-    });
+    // $('.read-more-button').on('click', function() {
+    //     openProjectModal($(this).data('target-project'));
+    // });
 
     $(document).on('click', ".close-project", function(e) {
         e.stopPropagation();
         closeProjectModal()
     });
 
-    function closeProjectModal() {
-        let destination = $(".active-modal");
-        destination.removeClass('animate__animated animate__zoomIn animate__faster').addClass("animate__animated animate__faster animate__zoomOut");
-        setTimeout(function () {
-            destination.addClass("hidden");
-            destination.removeClass("animate__animated animate__faster animate__zoomOut");
-            $('.overlay.project-overlay').delay(300).addClass('hidden')
-        }, 300)
-        $('html body').removeClass("overflow-hidden");
-    }
+    // function closeProjectModal() {
+    //     let destination = $(".active-modal");
+    //     destination.removeClass('animate__animated animate__zoomIn animate__faster').addClass("animate__animated animate__faster animate__zoomOut");
+    //     setTimeout(function () {
+    //         destination.addClass("hidden");
+    //         destination.removeClass("animate__animated animate__faster animate__zoomOut");
+    //         $('.overlay.project-overlay').delay(300).addClass('hidden')
+    //     }, 300)
+    //     $('html body').removeClass("overflow-hidden");
+    // }
 
     $('#nav-collapse').on('click', function () {
         $('#nav-content').slideToggle();

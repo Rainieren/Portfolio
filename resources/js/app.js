@@ -5,7 +5,7 @@ window.Vue = require('vue');
 const app = new Vue({
     el: '#app',
     data: {
-        projects: []
+        projects: [],
     },
     mounted() {
         this.getProjects();
@@ -19,5 +19,15 @@ const app = new Vue({
                     console.log(err)
             });
         }
-    }
+    },
 })
+
+Vue.filter('str_limit', function (value, size) {
+    if (!value) return '';
+    value = value.toString();
+
+    if (value.length <= size) {
+        return value;
+    }
+    return value.substr(0, size) + '...';
+});
