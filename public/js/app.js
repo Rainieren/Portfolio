@@ -1970,6 +1970,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['project']
 });
@@ -19748,7 +19749,7 @@ var render = function() {
     "div",
     {
       staticClass:
-        "overlay project-overlay fixed w-full h-full bg-gray-800 bg-opacity-75 top-0 left-0 flex items-center justify-center hidden z-10 close-project"
+        "overlay fixed w-full h-full bg-gray-800 bg-opacity-75 top-0 left-0 flex items-center justify-center hidden z-10"
     },
     [
       _c(
@@ -19771,9 +19772,9 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n                " +
+                  "\n                    " +
                     _vm._s(_vm.project.description) +
-                    "\n            "
+                    "\n                "
                 )
               ]
             ),
@@ -31982,6 +31983,7 @@ Vue.component('project-card-modal', __webpack_require__(/*! ./components/project
 var app = new Vue({
   el: '#app',
   data: {
+    showModal: false,
     projects: []
   },
   mounted: function mounted() {

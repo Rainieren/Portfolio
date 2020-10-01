@@ -135,12 +135,13 @@
             </div>
 
             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 my-10 gap-10">
-                <project-card v-bind:project="project" v-if="projects" v-for="project in projects"></project-card>
+                <project-card v-bind:project="project" v-bind:key="project.id" v-if="projects" v-for="project in projects"></project-card>
             </div>
         </div>
+        <project-card-modal v-bind:project="project" v-bind:key="project.id" v-for="project in projects"></project-card-modal>
     </section>
 
-    <project-card-modal v-bind:project="project" v-if="projects" v-for="project in projects"></project-card-modal>
+
 
     <section class="section-services bg-white p-5 md:p-5 lg:p-10 xl:p-10">
         <div class="container mx-auto">
