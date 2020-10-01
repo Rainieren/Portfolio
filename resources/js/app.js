@@ -2,6 +2,10 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+Vue.component('project-card', require('./components/projectCardComponent.vue').default);
+Vue.component('project-card-modal', require('./components/projectCardModalComponent.vue').default);
+
+
 const app = new Vue({
     el: '#app',
     data: {
