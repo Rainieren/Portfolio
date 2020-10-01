@@ -1,5 +1,6 @@
 <template>
-    <div class="overlay project-overlay fixed w-full h-full bg-gray-800 bg-opacity-75 top-0 left-0 flex items-center justify-center hidden z-10 close-project">
+    <div class="overlay fixed w-full h-full bg-gray-800 bg-opacity-75 top-0 left-0 flex items-center justify-center hidden z-10">
+<!--        TODO:: Added hidden so it doesnt appear but needs to be removed later-->
         <div class="relative rounded overflow-hidden shadow-lg bg-white hidden m-5">
             <div class="p-6">
                 <div class="font-bold gilroy text-3xl mb-2">{{ project.name }}</div>

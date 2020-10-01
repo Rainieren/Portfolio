@@ -9,6 +9,7 @@ Vue.component('project-card-modal', require('./components/projectCardModalCompon
 const app = new Vue({
     el: '#app',
     data: {
+        showModal: false,
         projects: [],
     },
     mounted() {
