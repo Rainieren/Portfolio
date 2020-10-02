@@ -45,36 +45,6 @@ $(document).ready(function() {
         $('#nav-content').slideToggle();
     })
 
-    $('.submit-contact').on('submit', function(e) {
-        e.preventDefault();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $('.submit-contact-button span:first-child').removeClass('hidden');
-        $('.submit-button-text').text('Verwerken');
-
-        $.ajax({
-            url: '/message/store',
-            type: 'POST',
-            data: $(this).serialize(),
-            success: function (data) {
-                $('.submit-contact-button .button-loader').addClass('hidden');
-                $('.submit-contact-button .button-success').removeClass('hidden');
-                $('.submit-button-text').text('Verstuurd!');
-                $('.submit-contact').trigger("reset");
-                setInterval(function () {
-                    $('.submit-contact-button .button-success').addClass('hidden');
-                    $('.submit-button-text').text('Versturen');
-                }, 5000)
-            },
-            error: function (data) {
-                alert("fail")
-            }
-        });
-    });
-
     // $('.language-filter-button').on('click', function() {
     //     if($(this).data('language'))
     //     showFilteredCards($(this).data('language'));

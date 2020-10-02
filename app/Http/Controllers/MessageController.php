@@ -35,26 +35,15 @@ class MessageController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        $validateData = Validator::make($request->all(), [
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'email' => 'required',
-            'reason' => 'required|not_in:0',
-            'message' => 'required',
-        ]);
-
-        if ($validateData->fails()) {
-            return redirect(url()->previous() .'#contact-form')->withErrors($validateData)->withInput();
-        }
         Message::create($request->all());
 
         Mail::to('rainier.laan@home.nl')->send(new NewMessageNotification($request->all()));
 
-        return redirect('/');
+        return response()->json([$request->all()]);
     }
 
     /**

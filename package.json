@@ -22,6 +22,8 @@
     "dependencies": {
         "animate.css": "^4.1.1",
         "stable": "^0.1.8",
-        "tailwindcss": "^1.8.10"
+        "tailwindcss": "^1.8.10",
+        "vue": "^2.6.12",
+        "vuelidate": "^0.7.5"
     }
 }

@@ -1899,6 +1899,106 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/contactFormComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/contactFormComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'contactForm',
+  data: function data() {
+    return {
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      firstname: '',
+      lastname: '',
+      email: '',
+      reason: '',
+      message: ''
+    };
+  },
+  methods: {
+    sendContactForm: function sendContactForm() {
+      axios.post('/message/store', {
+        firstname: this.firstname,
+        lastname: this.lastname,
+        email: this.email,
+        reason: this.reason,
+        message: this.message
+      }).then(function (response) {})["catch"](function (err) {});
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projectCardComponent.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projectCardComponent.vue?vue&type=script&lang=js& ***!
@@ -19610,6 +19710,378 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/contactFormComponent.vue?vue&type=template&id=1c3984a4&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/contactFormComponent.vue?vue&type=template&id=1c3984a4& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      staticClass: "submit-contact",
+      attrs: { id: "contact-form" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.sendContactForm($event)
+        }
+      }
+    },
+    [
+      _c("input", {
+        attrs: { type: "hidden", name: "_token" },
+        domProps: { value: _vm.csrf }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex flex-wrap -mx-3 mb-6" }, [
+        _c("div", { staticClass: "w-full md:w-1/2 px-3 mb-6 md:mb-0" }, [
+          _c(
+            "label",
+            {
+              staticClass:
+                "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+              attrs: { for: "grid-first-name" }
+            },
+            [_vm._v("\n                Voornaam\n            ")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.firstname,
+                expression: "firstname"
+              }
+            ],
+            staticClass:
+              "appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600",
+            attrs: {
+              name: "firstname",
+              id: "firstname",
+              type: "text",
+              placeholder: "John"
+            },
+            domProps: { value: _vm.firstname },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.firstname = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-full md:w-1/2 px-3" }, [
+          _c(
+            "label",
+            {
+              staticClass:
+                "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+              attrs: { for: "grid-last-name" }
+            },
+            [_vm._v("\n                Achternaam\n            ")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.lastname,
+                expression: "lastname"
+              }
+            ],
+            staticClass:
+              " appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600",
+            attrs: {
+              name: "lastname",
+              id: "lastname",
+              type: "text",
+              placeholder: "Doe"
+            },
+            domProps: { value: _vm.lastname },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.lastname = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-full p-3" }, [
+          _c(
+            "label",
+            {
+              staticClass:
+                "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+              attrs: { for: "grid-last-name" }
+            },
+            [_vm._v("\n                E-mail\n            ")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email,
+                expression: "email"
+              }
+            ],
+            staticClass:
+              "appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600",
+            attrs: {
+              name: "email",
+              id: "email",
+              type: "text",
+              placeholder: "Example@outlook.com"
+            },
+            domProps: { value: _vm.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.email = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-full p-3" }, [
+          _c(
+            "label",
+            {
+              staticClass:
+                "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+              attrs: { for: "grid-state" }
+            },
+            [_vm._v("\n                Reden voor contact\n            ")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "relative" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.reason,
+                    expression: "reason"
+                  }
+                ],
+                staticClass:
+                  "appearance-none w-full bg-gray-200 border border-gray-200 focus:bg-gray-300 focus:border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none",
+                attrs: { name: "reason", id: "reason" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.reason = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { value: "" } }, [
+                  _vm._v("Selecteer een reden...")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "talk" } }, [
+                  _vm._v("Hoi zeggen")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "request" } }, [
+                  _vm._v("Een opdracht")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "other" } }, [
+                  _vm._v("Anders, namelijk")
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "fill-current h-4 w-4",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 20 20"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                      }
+                    })
+                  ]
+                )
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-full p-3" }, [
+          _c(
+            "label",
+            {
+              staticClass:
+                "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+              attrs: { for: "grid-last-name" }
+            },
+            [_vm._v("\n                Bericht\n            ")]
+          ),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.message,
+                expression: "message"
+              }
+            ],
+            staticClass:
+              "appearance-none block resize-none rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600",
+            attrs: {
+              name: "message",
+              rows: "4",
+              id: "message",
+              placeholder: "Waar zit je aan te denken?",
+              type: "text"
+            },
+            domProps: { value: _vm.message },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.message = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-full p-3" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "g-recaptcha submit-contact-button inline-flex items-center rounded-lg px-4 py-2 border border-transparent text-base leading-6 rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150",
+              attrs: { type: "submit", id: "" }
+            },
+            [
+              _c("span", { staticClass: "button-loader hidden" }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "animate-spin mr-3 h-5 w-5 text-white",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      fill: "none",
+                      viewBox: "0 0 24 24"
+                    }
+                  },
+                  [
+                    _c("circle", {
+                      staticClass: "opacity-25",
+                      attrs: {
+                        cx: "12",
+                        cy: "12",
+                        r: "10",
+                        stroke: "currentColor",
+                        "stroke-width": "4"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("path", {
+                      staticClass: "opacity-75",
+                      attrs: {
+                        fill: "currentColor",
+                        d:
+                          "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "button-success hidden" }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "mr-3 h-5 w-5 text-white",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round",
+                        "stroke-width": "2",
+                        d: "M5 13l4 4L19 7"
+                      }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "submit-button-text" }, [
+                _vm._v("Versturen")
+              ])
+            ]
+          )
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projectCardComponent.vue?vue&type=template&id=35323bff&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projectCardComponent.vue?vue&type=template&id=35323bff& ***!
@@ -31904,6 +32376,863 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/vuelidate/src/index.js":
+/*!*********************************************!*\
+  !*** ./node_modules/vuelidate/src/index.js ***!
+  \*********************************************/
+/*! exports provided: Vuelidate, validationMixin, withParams, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Vuelidate", function() { return Vuelidate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validationMixin", function() { return validationMixin; });
+/* harmony import */ var _vval__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vval */ "./node_modules/vuelidate/src/vval.js");
+/* harmony import */ var _params__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./params */ "./node_modules/vuelidate/src/params.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "withParams", function() { return _params__WEBPACK_IMPORTED_MODULE_1__["withParams"]; });
+
+
+
+const NIL = () => null
+
+const buildFromKeys = (keys, fn, keyFn) =>
+  keys.reduce((build, key) => {
+    build[keyFn ? keyFn(key) : key] = fn(key)
+    return build
+  }, {})
+
+function isFunction(val) {
+  return typeof val === 'function'
+}
+
+function isObject(val) {
+  return val !== null && (typeof val === 'object' || isFunction(val))
+}
+
+function isPromise(object) {
+  return isObject(object) && isFunction(object.then)
+}
+
+const getPath = (ctx, obj, path, fallback) => {
+  if (typeof path === 'function') {
+    return path.call(ctx, obj, fallback)
+  }
+
+  path = Array.isArray(path) ? path : path.split('.')
+  for (let i = 0; i < path.length; i++) {
+    if (obj && typeof obj === 'object') {
+      obj = obj[path[i]]
+    } else {
+      return fallback
+    }
+  }
+
+  return typeof obj === 'undefined' ? fallback : obj
+}
+
+
+
+const __isVuelidateAsyncVm = '__isVuelidateAsyncVm'
+function makePendingAsyncVm(Vue, promise) {
+  const asyncVm = new Vue({
+    data: {
+      p: true, // pending
+      v: false // value
+    }
+  })
+
+  promise.then(
+    (value) => {
+      asyncVm.p = false
+      asyncVm.v = value
+    },
+    (error) => {
+      asyncVm.p = false
+      asyncVm.v = false
+      throw error
+    }
+  )
+
+  asyncVm[__isVuelidateAsyncVm] = true
+  return asyncVm
+}
+
+const validationGetters = {
+  $invalid() {
+    const proxy = this.proxy
+    return (
+      this.nestedKeys.some((nested) => this.refProxy(nested).$invalid) ||
+      this.ruleKeys.some((rule) => !proxy[rule])
+    )
+  },
+  $dirty() {
+    if (this.dirty) {
+      return true
+    }
+    if (this.nestedKeys.length === 0) {
+      return false
+    }
+
+    return this.nestedKeys.every((key) => this.refProxy(key).$dirty)
+  },
+  $anyDirty() {
+    if (this.dirty) {
+      return true
+    }
+    if (this.nestedKeys.length === 0) {
+      return false
+    }
+
+    return this.nestedKeys.some((key) => this.refProxy(key).$anyDirty)
+  },
+  $error() {
+    return this.$dirty && !this.$pending && this.$invalid
+  },
+  $anyError() {
+    if (this.$error) return true
+
+    return this.nestedKeys.some((key) => this.refProxy(key).$anyError)
+  },
+  $pending() {
+    return (
+      this.ruleKeys.some((key) => this.getRef(key).$pending) ||
+      this.nestedKeys.some((key) => this.refProxy(key).$pending)
+    )
+  },
+  $params() {
+    const vals = this.validations
+    return {
+      ...buildFromKeys(
+        this.nestedKeys,
+        (key) => (vals[key] && vals[key].$params) || null
+      ),
+      ...buildFromKeys(this.ruleKeys, (key) => this.getRef(key).$params)
+    }
+  }
+}
+
+function setDirtyRecursive(newState) {
+  this.dirty = newState
+  const proxy = this.proxy
+  const method = newState ? '$touch' : '$reset'
+  this.nestedKeys.forEach((key) => {
+    proxy[key][method]()
+  })
+}
+
+const validationMethods = {
+  $touch() {
+    setDirtyRecursive.call(this, true)
+  },
+  $reset() {
+    setDirtyRecursive.call(this, false)
+  },
+  $flattenParams() {
+    const proxy = this.proxy
+    let params = []
+    for (const key in this.$params) {
+      if (this.isNested(key)) {
+        const childParams = proxy[key].$flattenParams()
+        for (let j = 0; j < childParams.length; j++) {
+          childParams[j].path.unshift(key)
+        }
+        params = params.concat(childParams)
+      } else {
+        params.push({ path: [], name: key, params: this.$params[key] })
+      }
+    }
+    return params
+  }
+}
+
+const getterNames = Object.keys(validationGetters)
+const methodNames = Object.keys(validationMethods)
+
+let _cachedComponent = null
+const getComponent = (Vue) => {
+  if (_cachedComponent) {
+    return _cachedComponent
+  }
+
+  const VBase = Vue.extend({
+    computed: {
+      refs() {
+        const oldVval = this._vval
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this._vval = this.children
+        Object(_vval__WEBPACK_IMPORTED_MODULE_0__["patchChildren"])(oldVval, this._vval)
+        const refs = {}
+        this._vval.forEach((c) => {
+          refs[c.key] = c.vm
+        })
+        return refs
+      }
+    },
+    beforeCreate() {
+      this._vval = null
+    },
+    beforeDestroy() {
+      if (this._vval) {
+        Object(_vval__WEBPACK_IMPORTED_MODULE_0__["patchChildren"])(this._vval)
+        this._vval = null
+      }
+    },
+    methods: {
+      getModel() {
+        return this.lazyModel ? this.lazyModel(this.prop) : this.model
+      },
+      getModelKey(key) {
+        var model = this.getModel()
+        if (model) {
+          return model[key]
+        }
+      },
+      hasIter() {
+        return false
+      }
+    }
+  })
+
+  const ValidationRule = VBase.extend({
+    data() {
+      return {
+        rule: null,
+        lazyModel: null,
+        model: null,
+        lazyParentModel: null,
+        rootModel: null
+      }
+    },
+    methods: {
+      runRule(parent) {
+        // Avoid using this.lazyParentModel to not get dependent on it.
+        // Passed as an argument for workaround
+        const model = this.getModel()
+        Object(_params__WEBPACK_IMPORTED_MODULE_1__["pushParams"])()
+        const rawOutput = this.rule.call(this.rootModel, model, parent)
+        const output = isPromise(rawOutput)
+          ? makePendingAsyncVm(Vue, rawOutput)
+          : rawOutput
+
+        const rawParams = Object(_params__WEBPACK_IMPORTED_MODULE_1__["popParams"])()
+        const params =
+          rawParams && rawParams.$sub
+            ? rawParams.$sub.length > 1
+              ? rawParams
+              : rawParams.$sub[0]
+            : null
+
+        return { output, params }
+      }
+    },
+    computed: {
+      run() {
+        const parent = this.lazyParentModel()
+        const isArrayDependant = Array.isArray(parent) && parent.__ob__
+
+        if (isArrayDependant) {
+          // force depend on the array
+          const arrayDep = parent.__ob__.dep
+          arrayDep.depend()
+
+          const target = arrayDep.constructor.target
+
+          if (!this._indirectWatcher) {
+            const Watcher = target.constructor
+            this._indirectWatcher = new Watcher(
+              this,
+              () => this.runRule(parent),
+              null,
+              { lazy: true }
+            )
+          }
+
+          // if the update cause is only the array update
+          // and value stays the same, don't recalculate
+          const model = this.getModel()
+          if (!this._indirectWatcher.dirty && this._lastModel === model) {
+            this._indirectWatcher.depend()
+            return target.value
+          }
+
+          this._lastModel = model
+          this._indirectWatcher.evaluate()
+          this._indirectWatcher.depend()
+        } else if (this._indirectWatcher) {
+          // array was replaced with different type at runtime
+          this._indirectWatcher.teardown()
+          this._indirectWatcher = null
+        }
+        return this._indirectWatcher
+          ? this._indirectWatcher.value
+          : this.runRule(parent)
+      },
+      $params() {
+        return this.run.params
+      },
+      proxy() {
+        const output = this.run.output
+        if (output[__isVuelidateAsyncVm]) {
+          return !!output.v
+        }
+        return !!output
+      },
+      $pending() {
+        const output = this.run.output
+        if (output[__isVuelidateAsyncVm]) {
+          return output.p
+        }
+        return false
+      }
+    },
+    destroyed() {
+      if (this._indirectWatcher) {
+        this._indirectWatcher.teardown()
+        this._indirectWatcher = null
+      }
+    }
+  })
+
+  const Validation = VBase.extend({
+    data() {
+      return {
+        dirty: false,
+        validations: null,
+        lazyModel: null,
+        model: null,
+        prop: null,
+        lazyParentModel: null,
+        rootModel: null
+      }
+    },
+    methods: {
+      ...validationMethods,
+      refProxy(key) {
+        return this.getRef(key).proxy
+      },
+      getRef(key) {
+        return this.refs[key]
+      },
+      isNested(key) {
+        return typeof this.validations[key] !== 'function'
+      }
+    },
+    computed: {
+      ...validationGetters,
+      nestedKeys() {
+        return this.keys.filter(this.isNested)
+      },
+      ruleKeys() {
+        return this.keys.filter((k) => !this.isNested(k))
+      },
+      keys() {
+        return Object.keys(this.validations).filter((k) => k !== '$params')
+      },
+      proxy() {
+        const keyDefs = buildFromKeys(this.keys, (key) => ({
+          enumerable: true,
+          configurable: true, // allow mocking lib calls
+          get: () => this.refProxy(key)
+        }))
+
+        const getterDefs = buildFromKeys(getterNames, (key) => ({
+          enumerable: true,
+          configurable: true,
+          get: () => this[key]
+        }))
+
+        const methodDefs = buildFromKeys(methodNames, (key) => ({
+          enumerable: false,
+          configurable: true,
+          get: () => this[key]
+        }))
+
+        const iterDefs = this.hasIter()
+          ? {
+              $iter: {
+                enumerable: true,
+                value: Object.defineProperties(
+                  {},
+                  {
+                    ...keyDefs
+                  }
+                )
+              }
+            }
+          : {}
+
+        return Object.defineProperties(
+          {},
+          {
+            ...keyDefs,
+            ...iterDefs,
+            $model: {
+              enumerable: true,
+              get: () => {
+                const parent = this.lazyParentModel()
+                if (parent != null) {
+                  return parent[this.prop]
+                } else {
+                  return null
+                }
+              },
+              set: (value) => {
+                const parent = this.lazyParentModel()
+                if (parent != null) {
+                  parent[this.prop] = value
+                  this.$touch()
+                }
+              }
+            },
+            ...getterDefs,
+            ...methodDefs
+          }
+        )
+      },
+      children() {
+        return [
+          ...this.nestedKeys.map((key) => renderNested(this, key)),
+          ...this.ruleKeys.map((key) => renderRule(this, key))
+        ].filter(Boolean)
+      }
+    }
+  })
+
+  const GroupValidation = Validation.extend({
+    methods: {
+      isNested(key) {
+        return typeof this.validations[key]() !== 'undefined'
+      },
+      getRef(key) {
+        const vm = this
+        return {
+          get proxy() {
+            // default to invalid
+            return vm.validations[key]() || false
+          }
+        }
+      }
+    }
+  })
+
+  const EachValidation = Validation.extend({
+    computed: {
+      keys() {
+        var model = this.getModel()
+        if (isObject(model)) {
+          return Object.keys(model)
+        } else {
+          return []
+        }
+      },
+      tracker() {
+        const trackBy = this.validations.$trackBy
+        return trackBy
+          ? (key) =>
+              `${getPath(this.rootModel, this.getModelKey(key), trackBy)}`
+          : (x) => `${x}`
+      },
+      getModelLazy() {
+        return () => this.getModel()
+      },
+      children() {
+        const def = this.validations
+        const model = this.getModel()
+
+        const validations = { ...def }
+        delete validations['$trackBy']
+
+        let usedTracks = {}
+
+        return this.keys
+          .map((key) => {
+            const track = this.tracker(key)
+            if (usedTracks.hasOwnProperty(track)) {
+              return null
+            }
+            usedTracks[track] = true
+            return Object(_vval__WEBPACK_IMPORTED_MODULE_0__["h"])(Validation, track, {
+              validations,
+              prop: key,
+              lazyParentModel: this.getModelLazy,
+              model: model[key],
+              rootModel: this.rootModel
+            })
+          })
+          .filter(Boolean)
+      }
+    },
+    methods: {
+      isNested() {
+        return true
+      },
+      getRef(key) {
+        return this.refs[this.tracker(key)]
+      },
+      hasIter() {
+        return true
+      }
+    }
+  })
+
+  const renderNested = (vm, key) => {
+    if (key === '$each') {
+      return Object(_vval__WEBPACK_IMPORTED_MODULE_0__["h"])(EachValidation, key, {
+        validations: vm.validations[key],
+        lazyParentModel: vm.lazyParentModel,
+        prop: key,
+        lazyModel: vm.getModel,
+        rootModel: vm.rootModel
+      })
+    }
+    const validations = vm.validations[key]
+    if (Array.isArray(validations)) {
+      const root = vm.rootModel
+      const refVals = buildFromKeys(
+        validations,
+        (path) =>
+          function() {
+            return getPath(root, root.$v, path)
+          },
+        (v) => (Array.isArray(v) ? v.join('.') : v)
+      )
+      return Object(_vval__WEBPACK_IMPORTED_MODULE_0__["h"])(GroupValidation, key, {
+        validations: refVals,
+        lazyParentModel: NIL,
+        prop: key,
+        lazyModel: NIL,
+        rootModel: root
+      })
+    }
+    return Object(_vval__WEBPACK_IMPORTED_MODULE_0__["h"])(Validation, key, {
+      validations,
+      lazyParentModel: vm.getModel,
+      prop: key,
+      lazyModel: vm.getModelKey,
+      rootModel: vm.rootModel
+    })
+  }
+
+  const renderRule = (vm, key) => {
+    return Object(_vval__WEBPACK_IMPORTED_MODULE_0__["h"])(ValidationRule, key, {
+      rule: vm.validations[key],
+      lazyParentModel: vm.lazyParentModel,
+      lazyModel: vm.getModel,
+      rootModel: vm.rootModel
+    })
+  }
+
+  _cachedComponent = { VBase, Validation }
+  return _cachedComponent
+}
+
+let _cachedVue = null
+function getVue(rootVm) {
+  if (_cachedVue) return _cachedVue
+  let Vue = rootVm.constructor
+  /* istanbul ignore next */
+  while (Vue.super) Vue = Vue.super
+  _cachedVue = Vue
+  return Vue
+}
+
+const validateModel = (model, validations) => {
+  const Vue = getVue(model)
+  const { Validation, VBase } = getComponent(Vue)
+  const root = new VBase({
+    computed: {
+      children() {
+        const vals =
+          typeof validations === 'function'
+            ? validations.call(model)
+            : validations
+
+        return [
+          Object(_vval__WEBPACK_IMPORTED_MODULE_0__["h"])(Validation, '$v', {
+            validations: vals,
+            lazyParentModel: NIL,
+            prop: '$v',
+            model,
+            rootModel: model
+          })
+        ]
+      }
+    }
+  })
+  return root
+}
+
+const validationMixin = {
+  data() {
+    const vals = this.$options.validations
+    if (vals) {
+      this._vuelidate = validateModel(this, vals)
+    }
+    return {}
+  },
+  beforeCreate() {
+    const options = this.$options
+    const vals = options.validations
+    if (!vals) return
+    if (!options.computed) options.computed = {}
+    if (options.computed.$v) return
+    options.computed.$v = function() {
+      return this._vuelidate ? this._vuelidate.refs.$v.proxy : null
+    }
+  },
+  beforeDestroy() {
+    if (this._vuelidate) {
+      this._vuelidate.$destroy()
+      this._vuelidate = null
+    }
+  }
+}
+
+function Vuelidate(Vue) {
+  Vue.mixin(validationMixin)
+}
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Vuelidate);
+
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/src/params.js":
+/*!**********************************************!*\
+  !*** ./node_modules/vuelidate/src/params.js ***!
+  \**********************************************/
+/*! exports provided: target, _setTarget, pushParams, popParams, withParams */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "target", function() { return target; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_setTarget", function() { return _setTarget; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pushParams", function() { return pushParams; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "popParams", function() { return popParams; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "withParams", function() { return withParams; });
+const stack = []
+
+// exported for tests
+let target = null
+const _setTarget = (x) => {
+  target = x
+}
+
+function pushParams() {
+  if (target !== null) {
+    stack.push(target)
+  }
+  target = {}
+}
+
+function popParams() {
+  const lastTarget = target
+  const newTarget = (target = stack.pop() || null)
+  if (newTarget) {
+    if (!Array.isArray(newTarget.$sub)) {
+      newTarget.$sub = []
+    }
+    newTarget.$sub.push(lastTarget)
+  }
+  return lastTarget
+}
+
+function addParams(params) {
+  if (typeof params === 'object' && !Array.isArray(params)) {
+    target = { ...target, ...params }
+  } else {
+    throw new Error('params must be an object')
+  }
+}
+
+function withParamsDirect(params, validator) {
+  return withParamsClosure((add) => {
+    return function(...args) {
+      add(params)
+      return validator.apply(this, args)
+    }
+  })
+}
+
+function withParamsClosure(closure) {
+  const validator = closure(addParams)
+  return function(...args) {
+    pushParams()
+    try {
+      return validator.apply(this, args)
+    } finally {
+      popParams()
+    }
+  }
+}
+
+function withParams(paramsOrClosure, maybeValidator) {
+  if (typeof paramsOrClosure === 'object' && maybeValidator !== undefined) {
+    return withParamsDirect(paramsOrClosure, maybeValidator)
+  }
+  return withParamsClosure(paramsOrClosure)
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/src/vval.js":
+/*!********************************************!*\
+  !*** ./node_modules/vuelidate/src/vval.js ***!
+  \********************************************/
+/*! exports provided: patchChildren, h */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "patchChildren", function() { return patchChildren; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return h; });
+// a minimial single-layer implementation
+// of virtual-validation patching,
+// based on Vue's snabbdom clone
+
+function isUndef(v) {
+  return v === null || v === undefined
+}
+
+function isDef(v) {
+  return v !== null && v !== undefined
+}
+
+function sameVval(oldVval, vval) {
+  return vval.tag === oldVval.tag && vval.key === oldVval.key
+}
+
+function createVm(vval) {
+  const Vm = vval.tag
+  vval.vm = new Vm({ data: vval.args })
+}
+
+function updateVval(vval) {
+  const keys = Object.keys(vval.args)
+  for (let i = 0; i < keys.length; i++) {
+    keys.forEach((k) => {
+      vval.vm[k] = vval.args[k]
+    })
+  }
+}
+
+function createKeyToOldIdx(children, beginIdx, endIdx) {
+  let i, key
+  const map = {}
+  for (i = beginIdx; i <= endIdx; ++i) {
+    key = children[i].key
+    if (isDef(key)) map[key] = i
+  }
+  return map
+}
+
+function updateChildren(oldCh, newCh) {
+  let oldStartIdx = 0
+  let newStartIdx = 0
+  let oldEndIdx = oldCh.length - 1
+  let oldStartVval = oldCh[0]
+  let oldEndVval = oldCh[oldEndIdx]
+  let newEndIdx = newCh.length - 1
+  let newStartVval = newCh[0]
+  let newEndVval = newCh[newEndIdx]
+  let oldKeyToIdx, idxInOld, elmToMove
+
+  while (oldStartIdx <= oldEndIdx && newStartIdx <= newEndIdx) {
+    if (isUndef(oldStartVval)) {
+      oldStartVval = oldCh[++oldStartIdx] // Vval has been moved left
+    } else if (isUndef(oldEndVval)) {
+      oldEndVval = oldCh[--oldEndIdx]
+    } else if (sameVval(oldStartVval, newStartVval)) {
+      patchVval(oldStartVval, newStartVval)
+      oldStartVval = oldCh[++oldStartIdx]
+      newStartVval = newCh[++newStartIdx]
+    } else if (sameVval(oldEndVval, newEndVval)) {
+      patchVval(oldEndVval, newEndVval)
+      oldEndVval = oldCh[--oldEndIdx]
+      newEndVval = newCh[--newEndIdx]
+    } else if (sameVval(oldStartVval, newEndVval)) {
+      // Vval moved right
+      patchVval(oldStartVval, newEndVval)
+      oldStartVval = oldCh[++oldStartIdx]
+      newEndVval = newCh[--newEndIdx]
+    } else if (sameVval(oldEndVval, newStartVval)) {
+      // Vval moved left
+      patchVval(oldEndVval, newStartVval)
+      oldEndVval = oldCh[--oldEndIdx]
+      newStartVval = newCh[++newStartIdx]
+    } else {
+      if (isUndef(oldKeyToIdx))
+        oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx)
+      idxInOld = isDef(newStartVval.key) ? oldKeyToIdx[newStartVval.key] : null
+      if (isUndef(idxInOld)) {
+        // New element
+        createVm(newStartVval)
+        newStartVval = newCh[++newStartIdx]
+      } else {
+        elmToMove = oldCh[idxInOld]
+        if (sameVval(elmToMove, newStartVval)) {
+          patchVval(elmToMove, newStartVval)
+          oldCh[idxInOld] = undefined
+          newStartVval = newCh[++newStartIdx]
+        } else {
+          // same key but different element. treat as new element
+          createVm(newStartVval)
+          newStartVval = newCh[++newStartIdx]
+        }
+      }
+    }
+  }
+  if (oldStartIdx > oldEndIdx) {
+    addVvals(newCh, newStartIdx, newEndIdx)
+  } else if (newStartIdx > newEndIdx) {
+    removeVvals(oldCh, oldStartIdx, oldEndIdx)
+  }
+}
+
+function addVvals(vvals, startIdx, endIdx) {
+  for (; startIdx <= endIdx; ++startIdx) {
+    createVm(vvals[startIdx])
+  }
+}
+
+function removeVvals(vvals, startIdx, endIdx) {
+  for (; startIdx <= endIdx; ++startIdx) {
+    const ch = vvals[startIdx]
+    if (isDef(ch)) {
+      ch.vm.$destroy()
+      ch.vm = null
+    }
+  }
+}
+
+function patchVval(oldVval, vval) {
+  if (oldVval === vval) {
+    return
+  }
+  vval.vm = oldVval.vm
+  updateVval(vval)
+}
+
+function patchChildren(oldCh, ch) {
+  if (isDef(oldCh) && isDef(ch)) {
+    if (oldCh !== ch) updateChildren(oldCh, ch)
+  } else if (isDef(ch)) {
+    addVvals(ch, 0, ch.length - 1)
+  } else if (isDef(oldCh)) {
+    removeVvals(oldCh, 0, oldCh.length - 1)
+  }
+}
+
+function h(tag, key, args) {
+  return { tag, key, args }
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -31972,14 +33301,20 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuelidate_src__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/src */ "./node_modules/vuelidate/src/index.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
 Vue.component('project-card', __webpack_require__(/*! ./components/projectCardComponent.vue */ "./resources/js/components/projectCardComponent.vue")["default"]);
 Vue.component('project-card-modal', __webpack_require__(/*! ./components/projectCardModalComponent.vue */ "./resources/js/components/projectCardModalComponent.vue")["default"]);
+Vue.component('contact-form', __webpack_require__(/*! ./components/contactFormComponent.vue */ "./resources/js/components/contactFormComponent.vue")["default"]);
+Vue.use(vuelidate_src__WEBPACK_IMPORTED_MODULE_0__["default"]);
 var app = new Vue({
   el: '#app',
   data: {
@@ -32043,6 +33378,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/contactFormComponent.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/contactFormComponent.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _contactFormComponent_vue_vue_type_template_id_1c3984a4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./contactFormComponent.vue?vue&type=template&id=1c3984a4& */ "./resources/js/components/contactFormComponent.vue?vue&type=template&id=1c3984a4&");
+/* harmony import */ var _contactFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./contactFormComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/contactFormComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _contactFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _contactFormComponent_vue_vue_type_template_id_1c3984a4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _contactFormComponent_vue_vue_type_template_id_1c3984a4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/contactFormComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/contactFormComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/contactFormComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_contactFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./contactFormComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/contactFormComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_contactFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/contactFormComponent.vue?vue&type=template&id=1c3984a4&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/contactFormComponent.vue?vue&type=template&id=1c3984a4& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_contactFormComponent_vue_vue_type_template_id_1c3984a4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./contactFormComponent.vue?vue&type=template&id=1c3984a4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/contactFormComponent.vue?vue&type=template&id=1c3984a4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_contactFormComponent_vue_vue_type_template_id_1c3984a4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_contactFormComponent_vue_vue_type_template_id_1c3984a4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
