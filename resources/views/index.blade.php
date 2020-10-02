@@ -136,9 +136,9 @@
 
             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 my-10 gap-10">
                 <project-card v-bind:project="project" v-bind:key="project.id" v-if="projects" v-for="project in projects"></project-card>
+                <project-card-modal v-bind:project="project" v-bind:key="project.id" v-for="project in projects"></project-card-modal>
             </div>
         </div>
-        <project-card-modal v-bind:project="project" v-bind:key="project.id" v-for="project in projects"></project-card-modal>
     </section>
 
 
