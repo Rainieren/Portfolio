@@ -6,26 +6,31 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Voornaam
                 </label>
-                <input v-model="firstname" name="firstname" class="appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="firstname" type="text" placeholder="John">
+                <input v-model.trim="$v.firstname.$model" v-model="firstname" name="firstname" class="appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="firstname" type="text" placeholder="John">
+                <span class="error text-red-500" v-if="!$v.firstname.required">Voornaam is verplicht!</span>
             </div>
             <div class="w-full md:w-1/2 px-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     Achternaam
                 </label>
-                <input v-model="lastname" name="lastname" class=" appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="lastname" type="text" placeholder="Doe">
+                <input v-model.trim="$v.lastname.$model" v-model="lastname" name="lastname" class=" appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="lastname" type="text" placeholder="Doe">
+                <span class="error text-red-500" v-if="!$v.lastname.required">Achternaam is verplicht!</span>
             </div>
             <div class="w-full p-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     E-mail
                 </label>
-                <input v-model="email" name="email" class="appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="email" type="text" placeholder="Example@outlook.com">
+                <input v-model.trim="$v.email.$model" v-model="email" name="email" class="appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="email" type="text" placeholder="Example@outlook.com">
+                <span class="error text-red-500" v-if="!$v.email.required">Email is verplicht!</span>
+                <span class="error text-red-500" v-if="!$v.email.email">Het moet wel een email zijn he</span>
+
             </div>
             <div class="w-full p-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
                     Reden voor contact
                 </label>
                 <div class="relative">
-                    <select v-model="reason" name="reason" class="appearance-none w-full bg-gray-200 border border-gray-200 focus:bg-gray-300 focus:border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none" id="reason">
+                    <select v-model.trim="$v.reason.$model" v-model="reason" name="reason" class="appearance-none w-full bg-gray-200 border border-gray-200 focus:bg-gray-300 focus:border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none" id="reason">
                         <option value="">Selecteer een reden...</option>
                         <option value="talk">Hoi zeggen</option>
                         <option value="request">Een opdracht</option>
@@ -35,12 +40,14 @@
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                     </div>
                 </div>
+                <span class="error text-red-500" v-if="!$v.reason.required">Reden is verplicht!</span>
             </div>
             <div class="w-full p-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     Bericht
                 </label>
-                <textarea v-model="message" name="message" rows="4" class="appearance-none block resize-none rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="message" placeholder="Waar zit je aan te denken?" type="text"></textarea>
+                <textarea v-model.trim="$v.message.$model" v-model="message" name="message" rows="4" class="appearance-none block resize-none rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="message" placeholder="Waar zit je aan te denken?" type="text"></textarea>
+                <span class="error text-red-500" v-if="!$v.message.required">Bericht is verplicht!</span>
             </div>
             <div class="w-full p-3">
                 <button type="submit" id="" class="g-recaptcha submit-contact-button inline-flex items-center rounded-lg px-4 py-2 border border-transparent text-base leading-6 rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
@@ -63,6 +70,12 @@
 </template>
 
 <script>
+    import Vue from "vue";
+    import { required, email } from "vuelidate/lib/validators";
+    import Vuelidate from "vuelidate";
+
+    Vue.use(Vuelidate)
+
     export default {
         name: 'contactForm',
         data() {
@@ -84,11 +97,29 @@
                     reason: this.reason,
                     message: this.message
                 }).then(response => {
-
+                    this.firstname = ''
                 }).catch(err => {
 
                 });
             }
         },
+        validations: {
+            firstname: {
+                required
+            },
+            lastname: {
+                required
+            },
+            email: {
+                required,
+                email
+            },
+            reason: {
+                required
+            },
+            message: {
+                required
+            }
+        }
     }
 </script>

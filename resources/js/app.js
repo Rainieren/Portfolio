@@ -2,13 +2,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import Vuelidate from "vuelidate/src";
-
 Vue.component('project-card', require('./components/projectCardComponent.vue').default);
 Vue.component('project-card-modal', require('./components/projectCardModalComponent.vue').default);
 Vue.component('contact-form', require('./components/contactFormComponent.vue').default);
-
-Vue.use(Vuelidate)
 
 const app = new Vue({
     el: '#app',
