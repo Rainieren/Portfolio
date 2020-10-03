@@ -7,21 +7,21 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Voornaam
                 </label>
-                <input v-model.trim="$v.firstname.$model" v-model="firstname" :class='{"border-red-600": $v.firstname.$error}' name="firstname" class="appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="firstname" type="text" placeholder="John">
+                <input v-model.trim="$v.firstname.$model" v-model="firstname" :class='{"border-red-600": submitted && $v.firstname.$error}' name="firstname" class="appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="firstname" type="text" placeholder="John">
                 <span class="error text-red-500" v-if="submitted && !$v.firstname.required">Voornaam is verplicht!</span>
             </div>
             <div class="w-full md:w-1/2 px-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     Achternaam
                 </label>
-                <input v-model.trim="$v.lastname.$model" v-model="lastname" :class='{"border-red-600": $v.lastname.$error}' name="lastname" class=" appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="lastname" type="text" placeholder="Doe">
+                <input v-model.trim="$v.lastname.$model" v-model="lastname" :class='{"border-red-600": submitted && $v.lastname.$error}' name="lastname" class=" appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="lastname" type="text" placeholder="Doe">
                 <span class="error text-red-500" v-if="submitted && !$v.lastname.required">Achternaam is verplicht!</span>
             </div>
             <div class="w-full p-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     E-mail
                 </label>
-                <input v-model.trim="$v.email.$model" v-model="email" :class='{"border-red-600": $v.email.$error}' name="email" class="appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="email" type="text" placeholder="Example@outlook.com">
+                <input v-model.trim="$v.email.$model" v-model="email" :class='{"border-red-600": submitted && $v.email.$error}' name="email" class="appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="email" type="text" placeholder="Example@outlook.com">
                 <span class="error text-red-500" v-if="submitted && !$v.email.required">Email is verplicht!</span>
                 <span class="error text-red-500" v-if="submitted && !$v.email.email">Het moet wel een email zijn he</span>
 
@@ -31,7 +31,7 @@
                     Reden voor contact
                 </label>
                 <div class="relative">
-                    <select v-model.trim="$v.reason.$model" v-model="reason" :class='{"border-red-600": $v.reason.$error}' name="reason" class="appearance-none w-full bg-gray-200 border border-gray-200 focus:bg-gray-300 focus:border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none" id="reason">
+                    <select v-model.trim="$v.reason.$model" v-model="reason" :class='{"border-red-600": submitted && $v.reason.$error}' name="reason" class="appearance-none w-full bg-gray-200 border border-gray-200 focus:bg-gray-300 focus:border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none" id="reason">
                         <option value="">Selecteer een reden...</option>
                         <option value="talk">Hoi zeggen</option>
                         <option value="request">Een opdracht</option>
@@ -47,7 +47,7 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     Bericht
                 </label>
-                <textarea v-model.trim="$v.message.$model" v-model="message" :class='{"border-red-600": $v.message.$error}' name="message" rows="4" class="appearance-none block resize-none rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="message" placeholder="Waar zit je aan te denken?" type="text"></textarea>
+                <textarea v-model.trim="$v.message.$model" v-model="message" :class='{"border-red-600": submitted && $v.message.$error}' name="message" rows="4" class="appearance-none block resize-none rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="message" placeholder="Waar zit je aan te denken?" type="text"></textarea>
                 <span class="error text-red-500" v-if="submitted && !$v.message.required">Bericht is verplicht!</span>
                 <span class="error text-red-500" v-if="submitted && !$v.message.minLength">Bericht moet minimaal {{$v.message.$params.minLength.min}} tekens zijn!</span>
             </div>
