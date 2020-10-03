@@ -54,7 +54,6 @@
                 <span class="error text-red-500" v-if="submitted && !$v.message.minLength">Bericht moet minimaal {{$v.message.$params.minLength.min}} tekens zijn!</span>
             </div>
             <div class="w-full p-3">
-
                 <button @click.prevent="sendContactForm" type="submit" id="" class="g-recaptcha submit-contact-button inline-flex items-center rounded-lg px-4 py-2 border border-transparent text-base leading-6 rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
                      <span v-if="isLoading" class="button-loader">
                        <svg class="animate-spin mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -67,19 +66,7 @@
             </div>
         </div>
     </form>
-    <transition name="slide-fade">
-        <div v-if="showConfirm" class="bg-white rounded-lg shadow-lg p-5 fixed bottom-0 right-0 m-10 flex">
-            <div class="w-2/12 flex justify-center items-center">
-                <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            </div>
-            <div class="w-10/12">
-                <p class="font-bold">Bericht verzonden!</p>
-                <p class="text-gray-600">Je bericht is succesvol verzonden. Ga ondertussen anders een lekker ijsje eten <i class="em em-icecream" aria-role="presentation" aria-label="SOFT ICE CREAM"></i> </p>
-            </div>
-        </div>
-    </transition>
+    <contact-form-flash ref="contactFlash"></contact-form-flash>
 </div>
 
 </template>
@@ -88,6 +75,7 @@
     import Vue from "vue";
     import { required, email, minLength, maxLength } from "vuelidate/lib/validators";
     import Vuelidate from "vuelidate";
+    import contactFormFlashComponent from "./contactFormFlashComponent";
 
     Vue.use(Vuelidate)
 
@@ -96,7 +84,6 @@
         data() {
             return {
                 submitted: false,
-                showConfirm: false,
                 isLoading: false,
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 firstname: '',
@@ -105,6 +92,9 @@
                 reason: '',
                 message: ''
             }
+        },
+        components: {
+            contactFormFlashComponent
         },
         methods: {
             sendContactForm: function() {
@@ -123,7 +113,7 @@
                         message: this.message
                     }).then(response => {
                         this.isLoading = false
-                        this.showConfirm = true
+                        this.$refs.contactFlash.showConfirm = true
                         this.firstname = '',
                         this.lastname = '',
                         this.email = '',
@@ -131,7 +121,7 @@
                         this.message = ''
                         this.submitted = false
                         setTimeout(()=>{
-                            this.showConfirm = false;
+                            this.$refs.contactFlash.showConfirm = false;
                         },5000);
                     }).catch(err => {
 
@@ -164,15 +154,15 @@
 </script>
 
 <style>
-.slide-fade-enter-active {
-    transition: all .3s ease;
-}
-.slide-fade-leave-active {
-    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-to
-    /* .slide-fade-leave-active below version 2.1.8 */ {
-    transform: translateX(10px);
-    opacity: 0;
-}
+    .slide-fade-enter-active {
+        transition: all .2s ease;
+    }
+    .slide-fade-leave-active {
+        transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-to
+        /* .slide-fade-leave-active below version 2.1.8 */ {
+        transform: translateX(10px);
+        opacity: 0;
+    }
 </style>
