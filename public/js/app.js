@@ -20964,12 +20964,12 @@ var render = function() {
               [
                 _c(
                   "div",
-                  { staticClass: "w-1/12 flex justify-center items-center" },
+                  { staticClass: "w-2/12 flex justify-center items-center" },
                   [
                     _c(
                       "svg",
                       {
-                        staticClass: "h-6 w-6 text-green-600",
+                        staticClass: "h-6 w-6 text-green-500",
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
                           fill: "none",
@@ -20991,15 +20991,22 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c("div", { staticClass: "w-11/12" }, [
+                _c("div", { staticClass: "w-10/12" }, [
                   _c("p", { staticClass: "font-bold" }, [
-                    _vm._v("Bericht is verzonden!")
+                    _vm._v("Bericht verzonden!")
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "text-gray-600" }, [
                     _vm._v(
-                      "Je bericht is goed ontvangen! Je kan binnenkort een reactie terug verwachten"
-                    )
+                      "Je bericht is succesvol verzonden. Ga ondertussen anders een lekker ijsje eten "
+                    ),
+                    _c("i", {
+                      staticClass: "em em-icecream",
+                      attrs: {
+                        "aria-role": "presentation",
+                        "aria-label": "SOFT ICE CREAM"
+                      }
+                    })
                   ])
                 ])
               ]
