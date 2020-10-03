@@ -13,6 +13,7 @@ const app = new Vue({
     data: {
         showModal: false,
         projects: [],
+        filteredProjects: [],
         languages: [],
         languageFilterKey: 'PHP'
     },
@@ -24,7 +25,8 @@ const app = new Vue({
         getProjects: function() {
             axios.get('/api/get/projects')
                 .then(response => {
-                    this.projects = response.data
+                    this.filteredProjects = this.projects = response.data
+
                 }).catch(err => {
                 console.log(err)
             });
@@ -39,9 +41,9 @@ const app = new Vue({
         },
         filterProjectsByLanguage () {
             if(this.languageFilterKey === 'all') {
-                return this.projects;
+                this.filteredProjects = this.projects;
             } else {
-                return this.projects.filter(function(project) {
+                this.filteredProjects = this.projects.filter((project) => {
                     return this.languageFilterKey === project.language
                 });
             }
