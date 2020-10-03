@@ -2203,6 +2203,32 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projectLanguageButtonFilterComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projectLanguageButtonFilterComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['language'],
+  data: function data() {
+    return {};
+  },
+  methods: {}
+});
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/contactFormComponent.vue?vue&type=style&index=0&lang=css&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/contactFormComponent.vue?vue&type=style&index=0&lang=css& ***!
@@ -21405,6 +21431,38 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projectLanguageButtonFilterComponent.vue?vue&type=template&id=8fd380e6&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projectLanguageButtonFilterComponent.vue?vue&type=template&id=8fd380e6& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "button",
+    {
+      staticClass:
+        "language-filter-button bg-none hover:bg-indigo-600 text-black hover:text-white font-bold py-2 px-4 rounded-full transition duration-150 ease-in-out focus:outline-none",
+      on: { click: function($event) {} }
+    },
+    [_vm._v("\n    " + _vm._s(_vm.language.language) + "\n")]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -35526,26 +35584,46 @@ Vue.component('project-card', __webpack_require__(/*! ./components/projectCardCo
 Vue.component('project-card-modal', __webpack_require__(/*! ./components/projectCardModalComponent.vue */ "./resources/js/components/projectCardModalComponent.vue")["default"]);
 Vue.component('contact-form', __webpack_require__(/*! ./components/contactFormComponent.vue */ "./resources/js/components/contactFormComponent.vue")["default"]);
 Vue.component('contact-form-flash', __webpack_require__(/*! ./components/contactFormFlashComponent.vue */ "./resources/js/components/contactFormFlashComponent.vue")["default"]);
+Vue.component('project-language-filter-button', __webpack_require__(/*! ./components/projectLanguageButtonFilterComponent.vue */ "./resources/js/components/projectLanguageButtonFilterComponent.vue")["default"]);
 var app = new Vue({
   el: '#app',
   data: {
     showModal: false,
-    projects: []
+    projects: [],
+    languages: [],
+    languageFilterKey: 'PHP'
   },
   mounted: function mounted() {
     this.getProjects();
+    this.getProjectLanguages();
   },
   methods: {
     getProjects: function getProjects() {
       var _this = this;
 
-      setInterval(function () {
-        axios.get('/api/get/projects').then(function (response) {
-          _this.projects = response.data;
-        })["catch"](function (err) {
-          console.log(err);
+      axios.get('/api/get/projects').then(function (response) {
+        _this.projects = response.data;
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    getProjectLanguages: function getProjectLanguages() {
+      var _this2 = this;
+
+      axios.get('/api/get/project/languages').then(function (response) {
+        _this2.languages = response.data;
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    filterProjectsByLanguage: function filterProjectsByLanguage() {
+      if (this.languageFilterKey === 'all') {
+        return this.projects;
+      } else {
+        return this.projects.filter(function (project) {
+          return this.languageFilterKey === project.language;
         });
-      }, 1000);
+      }
     }
   }
 });
@@ -35901,6 +35979,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_projectCardModalComponent_vue_vue_type_template_id_75e7cebe___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_projectCardModalComponent_vue_vue_type_template_id_75e7cebe___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/projectLanguageButtonFilterComponent.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/projectLanguageButtonFilterComponent.vue ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _projectLanguageButtonFilterComponent_vue_vue_type_template_id_8fd380e6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projectLanguageButtonFilterComponent.vue?vue&type=template&id=8fd380e6& */ "./resources/js/components/projectLanguageButtonFilterComponent.vue?vue&type=template&id=8fd380e6&");
+/* harmony import */ var _projectLanguageButtonFilterComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./projectLanguageButtonFilterComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/projectLanguageButtonFilterComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _projectLanguageButtonFilterComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _projectLanguageButtonFilterComponent_vue_vue_type_template_id_8fd380e6___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _projectLanguageButtonFilterComponent_vue_vue_type_template_id_8fd380e6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/projectLanguageButtonFilterComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/projectLanguageButtonFilterComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/projectLanguageButtonFilterComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_projectLanguageButtonFilterComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./projectLanguageButtonFilterComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projectLanguageButtonFilterComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_projectLanguageButtonFilterComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/projectLanguageButtonFilterComponent.vue?vue&type=template&id=8fd380e6&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/projectLanguageButtonFilterComponent.vue?vue&type=template&id=8fd380e6& ***!
+  \*********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_projectLanguageButtonFilterComponent_vue_vue_type_template_id_8fd380e6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./projectLanguageButtonFilterComponent.vue?vue&type=template&id=8fd380e6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projectLanguageButtonFilterComponent.vue?vue&type=template&id=8fd380e6&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_projectLanguageButtonFilterComponent_vue_vue_type_template_id_8fd380e6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_projectLanguageButtonFilterComponent_vue_vue_type_template_id_8fd380e6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

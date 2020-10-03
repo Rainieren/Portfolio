@@ -102,14 +102,7 @@
             </div>
 
             <div class="project-filter-options hidden md:grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-10 gap-5 my-5">
-                <button class="language-filter-button bg-indigo-600 hover:bg-indigo-700 text-white hover:text-white font-bold py-2 px-4 rounded-full focus:outline-none" data-language="all">
-                    All
-                </button>
-                @foreach($projects->unique('language')->pluck('language') as $language)
-                    <button class="language-filter-button bg-none hover:bg-indigo-600 text-black hover:text-white font-bold py-2 px-4 rounded-full transition duration-150 ease-in-out focus:outline-none" data-language="{{ $language }}">
-                        {{ $language  }}
-                    </button>
-                @endforeach
+                <project-language-filter-button v-bind:language="language" v-bind:key="language.text" v-if="languages" v-for="language in languages"></project-language-filter-button>
             </div>
             <div class="project-filter-options md:hidden">
                 <div class="filter-dropdown">
@@ -139,8 +132,6 @@
             </div>
         </div>
     </section>
-
-
 
     <section class="section-services bg-white p-5 md:p-5 lg:p-10 xl:p-10">
         <div class="container mx-auto">

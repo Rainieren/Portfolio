@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/get/projects', [ProjectController::class, 'getAllProjects'])->name('get_projects');
+Route::get('/get/project/languages', [ProjectController::class, 'getAllProjectLanguages'])->name('get_project_languages');

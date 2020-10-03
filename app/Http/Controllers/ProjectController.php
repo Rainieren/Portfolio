@@ -93,4 +93,11 @@ class ProjectController extends Controller
     public function getAllProjects() {
         return response()->json(Project::all());
     }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getAllProjectLanguages() {
+        return response()->json(Project::select('language')->distinct()->get());
+    }
 }
