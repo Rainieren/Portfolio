@@ -9,6 +9,7 @@
                 </label>
                 <input v-model.trim="$v.firstname.$model" v-model="firstname" :class='{"border-red-600": submitted && $v.firstname.$error}' name="firstname" class="appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="firstname" type="text" placeholder="John">
                 <span class="error text-red-500" v-if="submitted && !$v.firstname.required">Voornaam is verplicht!</span>
+                <span class="error text-red-500" v-if="submitted && !$v.firstname.maxLength">Je voornaam is iets te lang. Het maximum is 50 tekens</span>
             </div>
             <div class="w-full md:w-1/2 px-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
@@ -16,6 +17,7 @@
                 </label>
                 <input v-model.trim="$v.lastname.$model" v-model="lastname" :class='{"border-red-600": submitted && $v.lastname.$error}' name="lastname" class=" appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="lastname" type="text" placeholder="Doe">
                 <span class="error text-red-500" v-if="submitted && !$v.lastname.required">Achternaam is verplicht!</span>
+                <span class="error text-red-500" v-if="submitted && !$v.lastname.maxLength">Je achternaam is iets te lang. Het maximum is 50 tekens</span>
             </div>
             <div class="w-full p-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
@@ -84,7 +86,7 @@
 
 <script>
     import Vue from "vue";
-    import { required, email, minLength } from "vuelidate/lib/validators";
+    import { required, email, minLength, maxLength } from "vuelidate/lib/validators";
     import Vuelidate from "vuelidate";
 
     Vue.use(Vuelidate)
@@ -139,14 +141,16 @@
         },
         validations: {
             firstname: {
-                required
+                required,
+                maxLength: maxLength(50)
             },
             lastname: {
-                required
+                required,
+                maxLength: maxLength(50)
             },
             email: {
                 required,
-                email
+                email,
             },
             reason: {
                 required

@@ -1998,6 +1998,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2048,10 +2050,12 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuelidate__WEBPACK_IMPORTED_MODUL
   },
   validations: {
     firstname: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["maxLength"])(50)
     },
     lastname: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["maxLength"])(50)
     },
     email: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
@@ -2078,6 +2082,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuelidate__WEBPACK_IMPORTED_MODUL
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _projectCardModalComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projectCardModalComponent */ "./resources/js/components/projectCardModalComponent.vue");
 //
 //
 //
@@ -2110,7 +2115,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    projectCardModalComponent: _projectCardModalComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    openModal: function openModal() {
+      this.$refs.projectModal.show = true;
+    }
+  },
   props: ['project']
 });
 
@@ -2142,7 +2157,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['project']
+  data: function data() {
+    return {
+      show: false
+    };
+  },
+  props: ['project'],
+  methods: {
+    closeModal: function closeModal() {
+      this.show = false;
+    }
+  }
 });
 
 /***/ }),
@@ -20525,6 +20550,14 @@ var render = function() {
                 ? _c("span", { staticClass: "error text-red-500" }, [
                     _vm._v("Voornaam is verplicht!")
                   ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.submitted && !_vm.$v.firstname.maxLength
+                ? _c("span", { staticClass: "error text-red-500" }, [
+                    _vm._v(
+                      "Je voornaam is iets te lang. Het maximum is 50 tekens"
+                    )
+                  ])
                 : _vm._e()
             ]),
             _vm._v(" "),
@@ -20598,6 +20631,14 @@ var render = function() {
               _vm.submitted && !_vm.$v.lastname.required
                 ? _c("span", { staticClass: "error text-red-500" }, [
                     _vm._v("Achternaam is verplicht!")
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.submitted && !_vm.$v.lastname.maxLength
+                ? _c("span", { staticClass: "error text-red-500" }, [
+                    _vm._v(
+                      "Je achternaam is iets te lang. Het maximum is 50 tekens"
+                    )
                   ])
                 : _vm._e()
             ]),
@@ -21112,32 +21153,38 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _vm._m(0)
+        _c(
+          "div",
+          { staticClass: "read-more mt-auto" },
+          [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "font-bold text-sm text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out hover:text-indigo-900 read-more-button flex items-center focus:outline-none",
+                attrs: { type: "button" },
+                on: { click: _vm.openModal }
+              },
+              [
+                _vm._v("\n                Lees meer "),
+                _c("span", { staticClass: "read-more-arrow ml-2" }, [
+                  _vm._v("→")
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("project-card-modal", {
+              ref: "projectModal",
+              attrs: { project: _vm.project }
+            })
+          ],
+          1
+        )
       ])
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "read-more mt-auto" }, [
-      _c(
-        "button",
-        {
-          staticClass:
-            "font-bold text-sm text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out hover:text-indigo-900 read-more-button flex items-center focus:outline-none",
-          attrs: { type: "button" }
-        },
-        [
-          _vm._v("\n                Lees meer "),
-          _c("span", { staticClass: "read-more-arrow ml-2" }, [_vm._v("→")])
-        ]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -21159,59 +21206,62 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass:
-        "overlay fixed w-full h-full bg-gray-800 bg-opacity-75 top-0 left-0 flex items-center justify-center hidden z-10"
-    },
-    [
-      _c(
+  return this.show
+    ? _c(
         "div",
         {
           staticClass:
-            "relative rounded overflow-hidden shadow-lg bg-white hidden m-5"
+            "overlay fixed w-full h-full bg-gray-800 bg-opacity-75 top-0 left-0 flex items-center justify-center z-10"
         },
         [
-          _c("div", { staticClass: "p-6" }, [
-            _c("div", { staticClass: "font-bold gilroy text-3xl mb-2" }, [
-              _vm._v(_vm._s(_vm.project.name))
-            ]),
-            _vm._v(" "),
-            _c(
-              "p",
-              {
-                staticClass:
-                  "text-gray-700 text-sm md:text-base lg:text-base xl:text-base mb-5"
-              },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.project.description) +
-                    "\n                "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              { attrs: { href: _vm.project.html_url, target: "_blank" } },
-              [_vm._v("Bekijk het op GitHub")]
-            )
-          ]),
-          _vm._v(" "),
           _c(
-            "button",
+            "div",
             {
               staticClass:
-                "absolute top-0 right-0 close-project p-4 font-bold text-gray-600"
+                "relative rounded overflow-hidden shadow-lg bg-white m-5"
             },
-            [_vm._v("×")]
+            [
+              _c("div", { staticClass: "p-6" }, [
+                _c("div", { staticClass: "font-bold gilroy text-3xl mb-2" }, [
+                  _vm._v(_vm._s(_vm.project.name))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "p",
+                  {
+                    staticClass:
+                      "text-gray-700 text-sm md:text-base lg:text-base xl:text-base mb-5"
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.project.description) +
+                        "\n                "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  { attrs: { href: _vm.project.html_url, target: "_blank" } },
+                  [_vm._v("Bekijk het op GitHub")]
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "absolute top-0 right-0 close-project p-4 font-bold text-gray-600",
+                  on: { click: _vm.closeModal }
+                },
+                [_vm._v("×")]
+              )
+            ]
           )
         ]
       )
-    ]
-  )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
