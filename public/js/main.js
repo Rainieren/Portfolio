@@ -25,10 +25,10 @@ $(document).ready(function() {
     //     openProjectModal($(this).data('target-project'));
     // });
 
-    $(document).on('click', ".close-project", function(e) {
-        e.stopPropagation();
-        closeProjectModal()
-    });
+    // $(document).on('click', ".close-project", function(e) {
+    //     e.stopPropagation();
+    //     closeProjectModal()
+    // });
 
     // function closeProjectModal() {
     //     let destination = $(".active-modal");

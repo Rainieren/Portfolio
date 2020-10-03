@@ -22,16 +22,27 @@
                 <p>{{ project.description | str_limit(128) }}</p>
             </div>
             <div class="read-more mt-auto">
-                <button type="button" class="font-bold text-sm text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out hover:text-indigo-900 read-more-button flex items-center focus:outline-none">
+                <button type="button" @click="openModal" class="font-bold text-sm text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out hover:text-indigo-900 read-more-button flex items-center focus:outline-none">
                     Lees meer <span class="read-more-arrow ml-2">→</span>
                 </button>
+                <project-card-modal :project="project" ref="projectModal"></project-card-modal>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import projectCardModalComponent from "./projectCardModalComponent";
     export default {
-        props: ['project'],
+        components: {
+            projectCardModalComponent
+        },
+        methods: {
+            openModal() {
+                this.$refs.projectModal.show = true;
+            }
+        },
+
+        props: ['project']
     }
 </script>
