@@ -39,6 +39,15 @@ const app = new Vue({
                 console.log(err)
             });
         },
+        selectedLanguage: function() {
+            if(this.languageFilterKey !== null) {
+                this.languages.forEach((item) => {
+                    item.active = item.language === this.languageFilterKey;
+                });
+            } else {
+                this.languageFilterKey = null
+            }
+        },
         filterProjectsByLanguage () {
             if(this.languageFilterKey === 'all') {
                 this.filteredProjects = this.projects;
