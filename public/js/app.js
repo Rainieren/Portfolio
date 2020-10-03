@@ -35545,7 +35545,7 @@ var app = new Vue({
         })["catch"](function (err) {
           console.log(err);
         });
-      }, 3000);
+      }, 1000);
     }
   }
 });
