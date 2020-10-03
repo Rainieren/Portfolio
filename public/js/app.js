@@ -20483,6 +20483,9 @@ var render = function() {
                 ],
                 staticClass:
                   "appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600",
+                class: {
+                  "border-red-600": _vm.submitted && _vm.$v.firstname.$error
+                },
                 attrs: {
                   name: "firstname",
                   id: "firstname",
@@ -20554,6 +20557,9 @@ var render = function() {
                 ],
                 staticClass:
                   " appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600",
+                class: {
+                  "border-red-600": _vm.submitted && _vm.$v.lastname.$error
+                },
                 attrs: {
                   name: "lastname",
                   id: "lastname",
@@ -20625,6 +20631,9 @@ var render = function() {
                 ],
                 staticClass:
                   "appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600",
+                class: {
+                  "border-red-600": _vm.submitted && _vm.$v.email.$error
+                },
                 attrs: {
                   name: "email",
                   id: "email",
@@ -20706,6 +20715,9 @@ var render = function() {
                     ],
                     staticClass:
                       "appearance-none w-full bg-gray-200 border border-gray-200 focus:bg-gray-300 focus:border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none",
+                    class: {
+                      "border-red-600": _vm.submitted && _vm.$v.reason.$error
+                    },
                     attrs: { name: "reason", id: "reason" },
                     on: {
                       change: [
@@ -20826,6 +20838,9 @@ var render = function() {
                 ],
                 staticClass:
                   "appearance-none block resize-none rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600",
+                class: {
+                  "border-red-600": _vm.submitted && _vm.$v.message.$error
+                },
                 attrs: {
                   name: "message",
                   rows: "4",
