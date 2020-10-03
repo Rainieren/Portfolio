@@ -8,7 +8,10 @@
 <script>
     export default {
         props: ['language'],
-        data: {
+        data: function(){
+            return {
+
+            }
         },
         methods: {
             filterLanguage(language) {
