@@ -3,12 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Rainier Laan</title>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/emoji.min.css') }}" rel="stylesheet">
 </head>
-    <body class="antialiased" id="app">
+    <body class="antialiased">
         <nav class=" flex items-center bg-gray-200 justify-between flex-wrap p-5 sm:p-5 md:p-5 lg:px-0 xl:px-0 shadow-lg">
             <div class="container mx-auto">
                 <div class="flex flex-col lg:flex-row">
@@ -44,7 +45,10 @@
                 </div>
             </div>
         </nav>
-        @yield('content')
+        <div id="app">
+            @yield('content')
+        </div>
+
     </body>
 
     <script src="{{ asset('js/app.js') }}"></script>

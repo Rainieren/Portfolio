@@ -1,0 +1,60 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: app
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: rainiersite
+    container_name: rainiersite-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks:
+      - rainiersite
+
+  db:
+    image: mysql:5.7
+    container_name: rainiersite-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - rainiersite
+
+  nginx:
+    image: nginx:alpine
+    container_name: rainiersite-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www
+      - ./nginx:/etc/nginx/conf.d/
+    networks:
+      - rainiersite
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: rainiersite-db
+      PMA_USER: ${DB_USERNAME}
+      PMA_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - rainiersite
+
+networks:
+  rainiersite:
+    driver: bridge

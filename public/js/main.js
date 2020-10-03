@@ -1,9 +1,5 @@
 $(document).ready(function() {
 
-    let card = $('.project-card');
-
-    $('.cookie-popup').removeClass('hidden').addClass('animate__animated animate__fadeInUp');
-
     $('.nav-slide').on('click', function() {
         let data = 'nav-destination';
         if($(this).data(data)) {
@@ -14,88 +10,9 @@ $(document).ready(function() {
         }
     });
 
-    function openProjectModal($project) {
-        $('html body').addClass("overflow-hidden");
-        $('.overlay.project-overlay').removeClass('hidden')
-        let destination = $('.project-' + $project);
-        destination.removeClass('hidden').delay(500).addClass('animate__animated animate__zoomIn animate__faster active-modal')
-    }
-
-    $('.read-more-button').on('click', function() {
-        openProjectModal($(this).data('target-project'));
-    });
-
-    $(document).on('click', ".close-project", function(e) {
-        e.stopPropagation();
-        closeProjectModal()
-    });
-
-    function closeProjectModal() {
-        let destination = $(".active-modal");
-        destination.removeClass('animate__animated animate__zoomIn animate__faster').addClass("animate__animated animate__faster animate__zoomOut");
-        setTimeout(function () {
-            destination.addClass("hidden");
-            destination.removeClass("animate__animated animate__faster animate__zoomOut");
-            $('.overlay.project-overlay').delay(300).addClass('hidden')
-        }, 300)
-        $('html body').removeClass("overflow-hidden");
-    }
-
     $('#nav-collapse').on('click', function () {
         $('#nav-content').slideToggle();
     })
-
-    $('.submit-contact').on('submit', function(e) {
-        e.preventDefault();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $('.submit-contact-button span:first-child').removeClass('hidden');
-        $('.submit-button-text').text('Verwerken');
-
-        $.ajax({
-            url: '/message/store',
-            type: 'POST',
-            data: $(this).serialize(),
-            success: function (data) {
-                $('.submit-contact-button .button-loader').addClass('hidden');
-                $('.submit-contact-button .button-success').removeClass('hidden');
-                $('.submit-button-text').text('Verstuurd!');
-                $('.submit-contact').trigger("reset");
-                setInterval(function () {
-                    $('.submit-contact-button .button-success').addClass('hidden');
-                    $('.submit-button-text').text('Versturen');
-                }, 5000)
-            },
-            error: function (data) {
-                alert("fail")
-            }
-        });
-    });
-
-    $('.language-filter-button').on('click', function() {
-        if($(this).data('language'))
-        showFilteredCards($(this).data('language'));
-    });
-
-    $('.language-filter-dropdown').change(function () {
-        showFilteredCards($('.language-filter-dropdown option:selected').val());
-    });
-
-    function showFilteredCards(language) {
-        card.show();
-        if(language === 'all') {
-            card.show();
-        } else {
-            card.each(function () {
-                if(!$(this).hasClass(language)) {
-                    $(this).hide();
-                }
-            });
-        }
-    }
 
     $('#accept-cookies').on('submit', function (e) {
         e.preventDefault();

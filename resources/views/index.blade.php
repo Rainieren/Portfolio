@@ -135,57 +135,12 @@
             </div>
 
             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 my-10 gap-10">
-                @foreach($projects as $project)
-                    <div class="project-card {{ $project->language }} rounded bg-gray-100 overflow-hidden shadow-lg rounded-lg flex flex-col relative" data-language="{{ $project->language }}">
-                        <img class="w-full" src="https://techcrunch.com/wp-content/uploads/2015/04/codecode.jpg" alt="Sunset in the mountains">
-                        <div class="px-6 py-4 h-full flex flex-col">
-
-                            <div class="project-info block min-h-8">
-                                <div class="w-5/6 float-left">
-                                    <p class="font-bold gilroy text-xl">{{ $project->name }}</p>
-                                </div>
-                                <div class="flex w-1/6 float-right items-center justify-end">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 mr-2 text-yellow-600">
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    {{ $project->stargazers_count }}
-                                </div>
-                            </div>
-
-                            <div class="project-language flex-1">
-                                <div class="w-full">
-                                    <p class="text-gray-600 text-sm font-bold">{{ $project->language }}</p>
-                                </div>
-                            </div>
-                            <div class="project-description flex-2 space-y-4 py-3 h-full">
-                                <p>{!! \Illuminate\Support\Str::limit($project->description, $limit = 125, $end = '...') !!}</p>
-                            </div>
-                            <div class="read-more mt-auto">
-                                <button type="button" class="font-bold text-sm text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out hover:text-indigo-900 read-more-button flex items-center focus:outline-none" data-target-project="{{ $project->name }}">
-                                    Lees meer <span class="read-more-arrow ml-2">→</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+                <project-card v-bind:project="project" v-bind:key="project.id" v-if="projects" v-for="project in projects"></project-card>
             </div>
         </div>
     </section>
 
-    <div class="overlay project-overlay fixed w-full h-full bg-gray-800 bg-opacity-75 top-0 left-0 flex items-center justify-center hidden z-10 close-project">
-        @foreach($projects as $project)
-            <div class="relative rounded overflow-hidden shadow-lg bg-white hidden project-{{ $project->name }} m-5" data-target-modal="{{ $project->name }}">
-                <div class="p-6">
-                    <div class="font-bold gilroy text-3xl mb-2">{{ $project->name }}</div>
-                    <p class="text-gray-700 text-sm md:text-base lg:text-base xl:text-base mb-5">
-                        {{ $project->description }}
-                    </p>
-                    <a href="{{ $project->html_url }}" class="" target="_blank">Bekijk het op GitHub</a>
-                </div>
-                <button class="absolute top-0 right-0 close-project p-4 font-bold text-gray-600" data-target-project="{{ $project->name }}">×</button>
-            </div>
-        @endforeach
-    </div>
+
 
     <section class="section-services bg-white p-5 md:p-5 lg:p-10 xl:p-10">
         <div class="container mx-auto">
@@ -239,82 +194,8 @@
                                 </div>
                                 <div class="contact-form" id="contact-form">
                                     <h2 class="font-bold mb-4 gilroy text-4xl xl:text-4xl lg:text-4xl md:text-4xl sm:text-4xl">Stuur een berichtje</h2>
-                                    <form action="{{ route('store_message') }}" method="POST" class="submit-contact" id="contact-form">
-                                        @csrf
-                                        <div class="flex flex-wrap -mx-3 mb-6">
-                                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                                                    Voornaam
-                                                </label>
-                                                <input name="firstname"  value="{{ old('firstname') }}" class="@error('firstname') border border-red-500 @enderror appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="grid-last-name" type="text" placeholder="John">
-                                                @error('firstname')
-                                                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-                                            <div class="w-full md:w-1/2 px-3">
-                                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                                    Achternaam
-                                                </label>
-                                                <input name="lastname" value="{{ old('lastname') }}" class="@error('lastname') border border-red-500 @enderror appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="grid-last-name" type="text" placeholder="Doe">
-                                                @error('lastname')
-                                                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-                                            <div class="w-full p-3">
-                                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                                    E-mail
-                                                </label>
-                                                <input name="email" value="{{ old('email') }}" class="@error('email') border border-red-500 @enderror appearance-none block rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="grid-last-name" type="text" placeholder="Example@outlook.com">
-                                                @error('email')
-                                                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-                                            <div class="w-full p-3">
-                                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-                                                    Reden voor contact
-                                                </label>
-                                                <div class="relative">
-                                                    <select name="reason" class="@error('reason') border-red-500 @enderror appearance-none w-full bg-gray-200 border border-gray-200 focus:bg-gray-300 focus:border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none" id="grid-state">
-                                                        <option value="">Selecteer een reden...</option>
-                                                        <option value="talk">Hoi zeggen</option>
-                                                        <option value="request">Een opdracht</option>
-                                                        <option value="other">Anders, namelijk</option>
-                                                    </select>
-                                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                                                    </div>
-                                                </div>
-                                                @error('reason')
-                                                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-                                            <div class="w-full p-3">
-                                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                                    Bericht
-                                                </label>
-                                                <textarea name="message" rows="4" class="@error('message') appearance-none border border-red-500 @enderror appearance-none block resize-none rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="grid-last-name" placeholder="Waar zit je aan te denken?" type="text">{{ old('message') }}</textarea>
-                                                @error('message')
-                                                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-                                            <div class="w-full p-3">
-                                                <button type="submit" id="" class="g-recaptcha submit-contact-button inline-flex items-center rounded-lg px-4 py-2 border border-transparent text-base leading-6 rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
-                                                   <span class="button-loader hidden">
-                                                       <svg class="animate-spin mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                                        </svg>
-                                                   </span>
-                                                    <span class="button-success hidden">
-                                                        <svg class="mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                                        </svg>
-                                                    </span>
-                                                    <span class="submit-button-text">Versturen</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
+
+                                    <contact-form></contact-form>
                                 </div>
                             </div>
                         </div>
