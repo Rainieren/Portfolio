@@ -18,7 +18,7 @@ const app = new Vue({
         projects: [],
         filteredProjects: [],
         languages: [],
-        languageFilterKey: 'all'
+        languageFilterKey: 'all',
         workExperiences: [],
         educations: [],
     },
