@@ -2225,6 +2225,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['experience'],
   data: function data() {
@@ -21465,6 +21466,10 @@ var render = function() {
             " – " +
             _vm._s(_vm.experience.stopped_at)
         )
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "text-gray-600" }, [
+        _vm._v(_vm._s(_vm.experience.location))
       ])
     ]),
     _vm._v(" "),

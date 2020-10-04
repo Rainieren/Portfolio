@@ -4,6 +4,7 @@
             <p class="font-bold mb-0">{{ experience.title }}</p>
             <p class="">{{ experience.company }}</p>
             <p class="text-gray-600">{{ experience.started_at }} – {{ experience.stopped_at }}</p>
+            <p class="text-gray-600">{{ experience.location }}</p>
         </div>
         <div class="">
             <p>{{ experience.description }}</p>
