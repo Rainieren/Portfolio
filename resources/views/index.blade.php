@@ -48,18 +48,8 @@
                             <div class="animate-pulse h-4 bg-gray-400 rounded w-3/4"></div>
                             <div class="animate-pulse h-4 bg-gray-400 rounded w-2/4"></div>
                         </div>
-                        @for ($i = 0; $i < 4; $i++)
-                            <div class="space-y-2 my-5">
-                                <div class="animate-pulse h-4 bg-gray-700 rounded w-2/4"></div>
-                            </div>
-                            <div class="flex justify-between my-5">
-                                <div class="animate-pulse h-4 bg-gray-400 rounded w-1/4"></div>
-                                <div class="animate-pulse h-4 bg-gray-400 rounded w-1/4"></div>
-                            </div>
-                            <div class="space-y-2 my-5">
-                                <div class="animate-pulse h-4 bg-gray-400 rounded w-3/4"></div>
-                            </div>
-                        @endfor
+
+                        <work-experience v-bind:experience="workExperience" v-bind:key="workExperience.id" v-for="workExperience in workExperiences"></work-experience>
 
                         <p class="font-bold">Mijn opleidingen</p>
                         <div class="space-y-2 my-3">

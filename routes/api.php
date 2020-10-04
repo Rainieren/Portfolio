@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\WorkExperienceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/get/projects', [ProjectController::class, 'getAllProjects'])->name('get_projects');
+
+
+Route::get('/get/workexperiences', [WorkExperienceController::class, 'getAllWorkExperiences'])->name('get_work_experiences');
