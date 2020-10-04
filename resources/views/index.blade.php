@@ -56,13 +56,7 @@
                             <div class="animate-pulse h-4 bg-gray-400 rounded w-3/4"></div>
                             <div class="animate-pulse h-4 bg-gray-400 rounded w-2/4"></div>
                         </div>
-                        @for ($i = 0; $i < 4; $i++)
-                            <div class="space-y-2 my-5">
-                                <div class="animate-pulse h-4 bg-gray-700 rounded w-2/4"></div>
-                                <div class="animate-pulse h-4 bg-gray-400 rounded w-1/4"></div>
-                                <div class="animate-pulse h-4 bg-gray-400 rounded w-3/4"></div>
-                            </div>
-                        @endfor
+                        <education v-bind:education="education" v-bind:key="education.id" v-for="education in educations"></education>
                     </div>
                     <div>
                         <p class="font-bold">Wat kan ik allemaal?</p>

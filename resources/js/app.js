@@ -7,6 +7,8 @@ Vue.component('project-card-modal', require('./components/projectCardModalCompon
 Vue.component('contact-form', require('./components/contactFormComponent.vue').default);
 Vue.component('contact-form-flash', require('./components/contactFormFlashComponent.vue').default);
 
+Vue.component('education', require('./components/educationComponent.vue').default);
+
 Vue.component('work-experience', require('./components/workExperienceComponent.vue').default);
 const app = new Vue({
     el: '#app',
@@ -14,10 +16,12 @@ const app = new Vue({
         showModal: false,
         projects: [],
         workExperiences: [],
+        educations: [],
     },
     mounted: function() {
         this.getProjects();
         this.getWorkExperiences();
+        this.getAllEducations();
     },
     methods: {
         getProjects: function() {
@@ -34,6 +38,14 @@ const app = new Vue({
             axios.get('/api/get/workexperiences')
                 .then(response => {
                     this.workExperiences = response.data
+                }).catch(err => {
+                console.log(err)
+            });
+        },
+        getAllEducations: function() {
+            axios.get('/api/get/educations')
+                .then(response => {
+                    this.educations = response.data
                 }).catch(err => {
                 console.log(err)
             });
