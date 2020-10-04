@@ -8,6 +8,9 @@ Vue.component('contact-form', require('./components/contactFormComponent.vue').d
 Vue.component('contact-form-flash', require('./components/contactFormFlashComponent.vue').default);
 Vue.component('project-language-filter-button', require('./components/projectLanguageButtonFilterComponent.vue').default);
 
+Vue.component('education', require('./components/educationComponent.vue').default);
+
+Vue.component('work-experience', require('./components/workExperienceComponent.vue').default);
 const app = new Vue({
     el: '#app',
     data: {
@@ -16,9 +19,13 @@ const app = new Vue({
         filteredProjects: [],
         languages: [],
         languageFilterKey: 'all'
+        workExperiences: [],
+        educations: [],
     },
     mounted: function() {
         this.getProjects();
+        this.getWorkExperiences();
+        this.getAllEducations();
         this.getProjectLanguages();
     },
     methods: {
@@ -55,6 +62,22 @@ const app = new Vue({
                     return this.languageFilterKey === project.language
                 });
             }
+        },
+        getWorkExperiences: function() {
+            axios.get('/api/get/workexperiences')
+                .then(response => {
+                    this.workExperiences = response.data
+                }).catch(err => {
+                console.log(err)
+            });
+        },
+        getAllEducations: function() {
+            axios.get('/api/get/educations')
+                .then(response => {
+                    this.educations = response.data
+                }).catch(err => {
+                console.log(err)
+            });
         }
     },
 })
