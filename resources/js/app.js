@@ -15,7 +15,7 @@ const app = new Vue({
         projects: [],
         filteredProjects: [],
         languages: [],
-        languageFilterKey: 'PHP'
+        languageFilterKey: 'all'
     },
     mounted: function() {
         this.getProjects();
@@ -26,7 +26,6 @@ const app = new Vue({
             axios.get('/api/get/projects')
                 .then(response => {
                     this.filteredProjects = this.projects = response.data
-
                 }).catch(err => {
                 console.log(err)
             });

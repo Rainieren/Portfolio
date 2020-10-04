@@ -2224,7 +2224,12 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {};
   },
-  methods: {}
+  methods: {
+    filterLanguage: function filterLanguage(language) {
+      this.$parent.languageFilterKey = language;
+      this.$parent.filterProjectsByLanguage();
+    }
+  }
 });
 
 /***/ }),
@@ -21450,8 +21455,12 @@ var render = function() {
     "button",
     {
       staticClass:
-        "language-filter-button bg-none hover:bg-indigo-600 text-black hover:text-white font-bold py-2 px-4 rounded-full transition duration-150 ease-in-out focus:outline-none",
-      on: { click: function($event) {} }
+        "language-filter-button hover:bg-indigo-600 text-black hover:text-white font-bold py-2 px-4 rounded-full transition duration-150 ease-in-out focus:outline-none",
+      on: {
+        click: function($event) {
+          return _vm.filterLanguage(_vm.language.language)
+        }
+      }
     },
     [_vm._v("\n    " + _vm._s(_vm.language.language) + "\n")]
   )
@@ -35590,8 +35599,9 @@ var app = new Vue({
   data: {
     showModal: false,
     projects: [],
+    filteredProjects: [],
     languages: [],
-    languageFilterKey: 'PHP'
+    languageFilterKey: 'all'
   },
   mounted: function mounted() {
     this.getProjects();
@@ -35602,7 +35612,7 @@ var app = new Vue({
       var _this = this;
 
       axios.get('/api/get/projects').then(function (response) {
-        _this.projects = response.data;
+        _this.filteredProjects = _this.projects = response.data;
       })["catch"](function (err) {
         console.log(err);
       });
@@ -35617,11 +35627,13 @@ var app = new Vue({
       });
     },
     filterProjectsByLanguage: function filterProjectsByLanguage() {
+      var _this3 = this;
+
       if (this.languageFilterKey === 'all') {
-        return this.projects;
+        this.filteredProjects = this.projects;
       } else {
-        return this.projects.filter(function (project) {
-          return this.languageFilterKey === project.language;
+        this.filteredProjects = this.projects.filter(function (project) {
+          return _this3.languageFilterKey === project.language;
         });
       }
     }
