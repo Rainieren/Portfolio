@@ -54,7 +54,7 @@
                 <span class="error text-red-500" v-if="submitted && !$v.message.minLength">Bericht moet minimaal {{$v.message.$params.minLength.min}} tekens zijn!</span>
             </div>
             <div class="w-full p-3">
-                <button @click.prevent="sendContactForm" type="submit" id="" class="g-recaptcha submit-contact-button inline-flex items-center rounded-lg px-4 py-2 border border-transparent text-base leading-6 rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
+                <button @click.prevent="sendContactForm" type="submit" id="" class="g-recaptcha submit-contact-button inline-flex items-center rounded-lg px-4 py-2 border border-transparent text-base leading-6 rounded-md text-white bg-gradient-to-br from-purple-500 to-indigo-500 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
                      <span v-if="isLoading" class="button-loader">
                        <svg class="animate-spin mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>

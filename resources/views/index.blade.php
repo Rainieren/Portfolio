@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+{{--    TODO:: Inplementeer dark modus--}}
     <section class="section-about-me p-5 md:p-5 lg:p-10 xl:p-10 bg-gray-200 flex items-center relative" style="min-height: 100vh;">
         <div class="container mx-auto">
             <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 px-5 sm:px-5 md:px-0 lg:px-0 xl:px-0 gap-5" >
                 <div class="introduction">
                     <h1 class="font-bold">Rainier Laan</h1>
-                    <div class="line h-1 bg-indigo-600 w-24 rounded-full"></div>
+                    <div class="line h-1 bg-gradient-to-br from-purple-500 to-indigo-500 w-24 rounded-full"></div>
                     <div class="text my-5">
                         <p class="text-gray-800">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aspernatur aut consectetur corporis delectus eius est facere iure iusto minus nam odit quas sint soluta, tempora tempore vitae voluptas.</p>
                         <p class="text-gray-800 my-5">Meer weten? Klik op de pijl</p>
@@ -20,15 +21,7 @@
                     </div>
                 </div>
                 <div class="introduction-image flex justify-center">
-                    <span class="relative rounded-full h-64 w-64 bg-gray-400 block p-5">
-                        <span class="relative rounded-full h-full w-full bg-indigo-600 block p-5">
-                            <span class="relative rounded-full h-full w-full bg-indigo-700 block p-5">
-                                <span class="relative rounded-full h-full w-full bg-indigo-800 block p-5">
-                                    <span class="relative rounded-full h-full w-full bg-indigo-900 block"></span>
-                                </span>
-                            </span>
-                        </span>
-                    </span>
+                    <lottie-player src="https://assets4.lottiefiles.com/private_files/lf30_oxurudgk.json"  background="transparent"  speed="1"  style="width: 400px; height: 400px;"  loop autoplay></lottie-player>
                 </div>
             </div>
 
@@ -44,18 +37,9 @@
                 <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-10">
                     <div>
                         <p class="font-bold">Waar heb ik gewerkt?</p>
-                        <div class="space-y-2 my-3">
-                            <div class="animate-pulse h-4 bg-gray-400 rounded w-3/4"></div>
-                            <div class="animate-pulse h-4 bg-gray-400 rounded w-2/4"></div>
-                        </div>
-
                         <work-experience v-bind:experience="workExperience" v-bind:key="workExperience.id" v-for="workExperience in workExperiences"></work-experience>
 
                         <p class="font-bold">Mijn opleidingen</p>
-                        <div class="space-y-2 my-3">
-                            <div class="animate-pulse h-4 bg-gray-400 rounded w-3/4"></div>
-                            <div class="animate-pulse h-4 bg-gray-400 rounded w-2/4"></div>
-                        </div>
                         <education v-bind:education="education" v-bind:key="education.id" v-for="education in educations"></education>
                     </div>
                     <div>
@@ -144,7 +128,7 @@
         <div class="maps bg-gray-200 w-100 flex items-center justify-center" style="height: 250px;">
             <iframe src="https://maps.google.com/maps?width=100%25&amp;height=1000&amp;hl=nl&amp;q=Groningen+(Mijn%20bedrijfsnaam)&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="100%" height="250" frameborder="0" style="border:0; filter: grayscale(1)" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         </div>
-        <div class="accent-color bg-indigo-600 w-full relative p-5 md:p-5 lg:p-10 xl:p-10">
+        <div class="accent-color bg-gradient-to-br from-purple-500 to-indigo-500 w-full relative p-5 md:p-5 lg:p-10 xl:p-10">
             <div class="container mx-auto">
                 <div class="footer-card relative" style="bottom: 100px;">
                     <div class="container mx-auto">
@@ -156,7 +140,7 @@
                                     <div class="contact-options">
                                         @for ($i = 0; $i < 3; $i++)
                                             <div class="option-mail flex my-10 space-x-4">
-                                                <div class="rounded-full bg-indigo-600 h-12 w-12"></div>
+                                                <div class="rounded-full bg-gradient-to-br from-purple-500 to-indigo-500 h-12 w-12"></div>
                                                 <div class="flex-1 space-y-4 py-1">
                                                     <div class="animate-pulse h-4 bg-gray-400 rounded w-2/4"></div>
                                                     <div class="space-y-2">
