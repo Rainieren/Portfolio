@@ -2,6 +2,14 @@
 
 @section('content')
 {{--    TODO:: Inplementeer dark modus--}}
+    <section class="dark-mode-switch">
+        <a href="#" class="bg-gradient-to-br from-purple-500 to-indigo-500 w-12 h-12 rounded-lg flex justify-center items-center fixed bottom-0 right-0 z-10 m-10 shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-white font-light">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+            </svg>
+        </a>
+    </section>
+
     <section class="section-about-me p-5 md:p-5 lg:p-10 xl:p-10 bg-gray-200 flex items-center relative" style="min-height: 100vh;">
         <div class="container mx-auto">
             <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 px-5 sm:px-5 md:px-0 lg:px-0 xl:px-0 gap-5" >

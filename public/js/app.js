@@ -21116,7 +21116,7 @@ var render = function() {
                 "button",
                 {
                   staticClass:
-                    "g-recaptcha submit-contact-button inline-flex items-center rounded-lg px-4 py-2 border border-transparent text-base leading-6 rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150",
+                    "g-recaptcha submit-contact-button inline-flex items-center rounded-lg px-4 py-2 border border-transparent text-base leading-6 rounded-md text-white bg-gradient-to-br from-purple-500 to-indigo-500 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150",
                   attrs: { type: "submit", id: "" },
                   on: {
                     click: function($event) {
@@ -21336,10 +21336,7 @@ var render = function() {
     [
       _c("img", {
         staticClass: "w-full",
-        attrs: {
-          src: "https://techcrunch.com/wp-content/uploads/2015/04/codecode.jpg",
-          alt: "Sunset in the mountains"
-        }
+        attrs: { src: "", alt: "Sunset in the mountains" }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "px-6 py-4 h-full flex flex-col" }, [
@@ -21357,7 +21354,7 @@ var render = function() {
               _c(
                 "svg",
                 {
-                  staticClass: "h-5 w-5 mr-2 text-yellow-600",
+                  staticClass: "h-5 w-5 mr-2 text-indigo-500",
                   attrs: {
                     xmlns: "http://www.w3.org/2000/svg",
                     viewBox: "0 0 20 20",
