@@ -1,30 +1,39 @@
 <template>
-    <div class="project-card rounded bg-gray-100 overflow-hidden shadow-lg rounded-lg flex flex-col relative">
-        <img class="w-full" src="" alt="Sunset in the mountains">
+    <div class="project-card rounded bg-white overflow-hidden shadow-lg rounded-lg flex flex-col relative">
+        <img class="w-full" src="" alt="">
         <div class="px-6 py-4 h-full flex flex-col">
             <div class="project-info block min-h-8">
-                <div class="w-5/6 float-left">
-                    <p class="font-bold gilroy text-xl">{{ project.name }}</p>
-                </div>
-                <div class="flex w-1/6 float-right items-center justify-end">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 mr-2 text-indigo-500">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    {{ project.stargazers_count }}
+                <div class="w-full">
+                    <p class="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">{{ project.language }}</p>
                 </div>
             </div>
             <div class="project-language flex-1">
-                <div class="w-full">
-                    <p class="text-gray-600 text-sm font-bold">{{ project.language }}</p>
+                <div class="w-5/6 float-left">
+                    <p class="font-bold gilroy text-xl">{{ project.name }}</p>
                 </div>
             </div>
             <div class="project-description flex-2 space-y-4 py-3 h-full">
                 <p>{{ project.description | str_limit(128) }}</p>
             </div>
             <div class="read-more mt-auto">
-                <button type="button" @click="openModal" class="font-bold text-sm text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out hover:text-indigo-900 read-more-button flex items-center focus:outline-none">
-                    Lees meer <span class="read-more-arrow ml-2">→</span>
-                </button>
+                <div class="flex items-center flex-wrap ">
+                    <button type="button" @click="openModal" class="font-bold text-sm text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out hover:text-indigo-900 read-more-button flex items-center focus:outline-none">
+                        Lees meer <span class="read-more-arrow ml-2">→</span>
+                    </button>
+                    <span class="text-gray-600 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-300">
+                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                          <circle cx="12" cy="12" r="3"></circle>
+                        </svg>1.2K
+                    </span>
+                    <span class="text-gray-600 inline-flex items-center leading-none text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                        {{ project.stargazers_count }}
+                    </span>
+                </div>
+
                 <project-card-modal :project="project" ref="projectModal"></project-card-modal>
             </div>
         </div>

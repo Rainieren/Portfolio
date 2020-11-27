@@ -10,7 +10,7 @@
         </a>
     </section>
 
-    <section class="settings-popup bg-white bottom-10 right-28 z-20 p-5 rounded-lg fixed shadow-lg" style="min-width: 400px; min-height: 400px;">
+    <section class="settings-popup bg-white bottom-10 right-28 z-20 p-5 rounded-lg fixed shadow-lg" style="min-width: 400px; min-height: 400px; display: none">
         <h4 class="border-b-2 border-gray-200">Instellingen</h4>
         <form action="" class="my-4">
             <li>Switch Dark modus</li>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="introduction-image flex justify-center">
+                <div class="introduction-image flex justify-center overflow-hidden">
                     <img src="images/blob.svg" width="400" height="400" alt="" class="absolute">
                     <lottie-player src="https://assets4.lottiefiles.com/private_files/lf30_oxurudgk.json"  background="transparent"  speed="1"  style="width: 400px; height: 400px;"  loop autoplay></lottie-player>
                 </div>
@@ -88,6 +88,9 @@
             </div>
 
             <div class="project-filter-options hidden md:grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-10 gap-5 my-5">
+                <button @click="filterLanguage('all')" class="language-filter-button hover:bg-indigo-600 text-black hover:text-white font-bold py-2 px-4 rounded-full transition duration-150 ease-in-out focus:outline-none">
+                    All
+                </button>
                 <project-language-filter-button v-bind:language="language" v-bind:key="language.text" v-if="languages" v-for="language in languages"></project-language-filter-button>
             </div>
             <div class="project-filter-options md:hidden">

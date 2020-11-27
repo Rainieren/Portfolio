@@ -2170,6 +2170,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -21331,58 +21340,29 @@ var render = function() {
     "div",
     {
       staticClass:
-        "project-card rounded bg-gray-100 overflow-hidden shadow-lg rounded-lg flex flex-col relative"
+        "project-card rounded bg-white overflow-hidden shadow-lg rounded-lg flex flex-col relative"
     },
     [
-      _c("img", {
-        staticClass: "w-full",
-        attrs: { src: "", alt: "Sunset in the mountains" }
-      }),
+      _c("img", { staticClass: "w-full", attrs: { src: "", alt: "" } }),
       _vm._v(" "),
       _c("div", { staticClass: "px-6 py-4 h-full flex flex-col" }, [
         _c("div", { staticClass: "project-info block min-h-8" }, [
-          _c("div", { staticClass: "w-5/6 float-left" }, [
-            _c("p", { staticClass: "font-bold gilroy text-xl" }, [
-              _vm._v(_vm._s(_vm.project.name))
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "flex w-1/6 float-right items-center justify-end" },
-            [
-              _c(
-                "svg",
-                {
-                  staticClass: "h-5 w-5 mr-2 text-indigo-500",
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    viewBox: "0 0 20 20",
-                    fill: "currentColor"
-                  }
-                },
-                [
-                  _c("path", {
-                    attrs: {
-                      d:
-                        "M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    }
-                  })
-                ]
-              ),
-              _vm._v(
-                "\n                " +
-                  _vm._s(_vm.project.stargazers_count) +
-                  "\n            "
-              )
-            ]
-          )
+          _c("div", { staticClass: "w-full" }, [
+            _c(
+              "p",
+              {
+                staticClass:
+                  "tracking-widest text-xs title-font font-medium text-gray-500 mb-1"
+              },
+              [_vm._v(_vm._s(_vm.project.language))]
+            )
+          ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "project-language flex-1" }, [
-          _c("div", { staticClass: "w-full" }, [
-            _c("p", { staticClass: "text-gray-600 text-sm font-bold" }, [
-              _vm._v(_vm._s(_vm.project.language))
+          _c("div", { staticClass: "w-5/6 float-left" }, [
+            _c("p", { staticClass: "font-bold gilroy text-xl" }, [
+              _vm._v(_vm._s(_vm.project.name))
             ])
           ])
         ]),
@@ -21401,21 +21381,98 @@ var render = function() {
           "div",
           { staticClass: "read-more mt-auto" },
           [
-            _c(
-              "button",
-              {
-                staticClass:
-                  "font-bold text-sm text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out hover:text-indigo-900 read-more-button flex items-center focus:outline-none",
-                attrs: { type: "button" },
-                on: { click: _vm.openModal }
-              },
-              [
-                _vm._v("\n                Lees meer "),
-                _c("span", { staticClass: "read-more-arrow ml-2" }, [
-                  _vm._v("→")
-                ])
-              ]
-            ),
+            _c("div", { staticClass: "flex items-center flex-wrap " }, [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "font-bold text-sm text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out hover:text-indigo-900 read-more-button flex items-center focus:outline-none",
+                  attrs: { type: "button" },
+                  on: { click: _vm.openModal }
+                },
+                [
+                  _vm._v("\n                    Lees meer "),
+                  _c("span", { staticClass: "read-more-arrow ml-2" }, [
+                    _vm._v("→")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass:
+                    "text-gray-600 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-300"
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "w-4 h-4 mr-1",
+                      attrs: {
+                        stroke: "currentColor",
+                        "stroke-width": "2",
+                        fill: "none",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round",
+                        viewBox: "0 0 24 24"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("circle", { attrs: { cx: "12", cy: "12", r: "3" } })
+                    ]
+                  ),
+                  _vm._v("1.2K\n                ")
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass:
+                    "text-gray-600 inline-flex items-center leading-none text-sm"
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "w-4 h-4 mr-1",
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        fill: "none",
+                        stroke: "currentColor",
+                        "stroke-width": "2",
+                        viewBox: "0 0 24 24",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round",
+                          "stroke-width": "2",
+                          d:
+                            "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.project.stargazers_count) +
+                      "\n                "
+                  )
+                ]
+              )
+            ]),
             _vm._v(" "),
             _c("project-card-modal", {
               ref: "projectModal",
@@ -36412,8 +36469,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/rainierlaan/Sites/private/portfolio/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/rainierlaan/Sites/private/portfolio/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/rainierlaan/Sites/website/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/rainierlaan/Sites/website/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
