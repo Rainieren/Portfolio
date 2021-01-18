@@ -146,8 +146,10 @@
 
 
     <footer class="section-contact footer relative" id="footer">
-        <div class="maps bg-gray-200 w-100 flex items-center justify-center" style="height: 250px;">
-            <iframe src="https://maps.google.com/maps?width=100%25&amp;height=1000&amp;hl=nl&amp;q=Groningen+(Mijn%20bedrijfsnaam)&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="100%" height="250" frameborder="0" style="border:0; filter: grayscale(1)" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <div class="maps bg-white w-100 flex items-center justify-center" style="height: 250px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="height: 500px; bottom: 70px; position: relative">
+                <path fill="#5000ca" fill-opacity="1" d="M0,256L30,245.3C60,235,120,213,180,208C240,203,300,213,360,208C420,203,480,181,540,176C600,171,660,181,720,192C780,203,840,213,900,224C960,235,1020,245,1080,250.7C1140,256,1200,256,1260,240C1320,224,1380,192,1410,176L1440,160L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
+            </svg>
         </div>
         <div class="accent-color bg-gradient-to-br from-purple-500 to-indigo-500 w-full relative p-5 md:p-5 lg:p-10 xl:p-10">
             <div class="container mx-auto">

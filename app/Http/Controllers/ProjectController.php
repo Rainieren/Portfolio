@@ -18,7 +18,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        $repos = GitHub::connection('main')->me()->repositories();
 
+        dd($repos);
     }
 
     /**
