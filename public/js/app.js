@@ -2176,9 +2176,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -21125,7 +21122,7 @@ var render = function() {
                 "button",
                 {
                   staticClass:
-                    "g-recaptcha submit-contact-button inline-flex items-center rounded-lg px-4 py-2 border border-transparent text-base leading-6 rounded-md text-white bg-gradient-to-br from-purple-500 to-indigo-500 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150",
+                    "submit-contact-button inline-flex items-center rounded-lg px-4 py-2 border border-transparent text-base leading-6 rounded-md text-white bg-gradient-to-br from-purple-500 to-indigo-500 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150",
                   attrs: { type: "submit", id: "" },
                   on: {
                     click: function($event) {
@@ -21343,7 +21340,10 @@ var render = function() {
         "project-card rounded bg-white overflow-hidden shadow-lg rounded-lg flex flex-col relative"
     },
     [
-      _c("img", { staticClass: "w-full", attrs: { src: "", alt: "" } }),
+      _c("img", {
+        staticClass: "w-full",
+        attrs: { src: "/images/stock-image.jpeg", alt: "" }
+      }),
       _vm._v(" "),
       _c("div", { staticClass: "px-6 py-4 h-full flex flex-col" }, [
         _c("div", { staticClass: "project-info block min-h-8" }, [
@@ -21398,39 +21398,10 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass:
-                    "text-gray-600 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-300"
-                },
-                [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "w-4 h-4 mr-1",
-                      attrs: {
-                        stroke: "currentColor",
-                        "stroke-width": "2",
-                        fill: "none",
-                        "stroke-linecap": "round",
-                        "stroke-linejoin": "round",
-                        viewBox: "0 0 24 24"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("circle", { attrs: { cx: "12", cy: "12", r: "3" } })
-                    ]
-                  ),
-                  _vm._v("1.2K\n                ")
-                ]
-              ),
+              _c("span", {
+                staticClass:
+                  "text-gray-600 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-300"
+              }),
               _vm._v(" "),
               _c(
                 "span",
@@ -36469,8 +36440,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/rainierlaan/Sites/website/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/rainierlaan/Sites/website/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/rainierlaan/Sites/private/website/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/rainierlaan/Sites/private/website/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

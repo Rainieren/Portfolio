@@ -1,6 +1,6 @@
 <template>
     <div class="project-card rounded bg-white overflow-hidden shadow-lg rounded-lg flex flex-col relative">
-        <img class="w-full" src="" alt="">
+        <img class="w-full" src="/images/stock-image.jpeg" alt="">
         <div class="px-6 py-4 h-full flex flex-col">
             <div class="project-info block min-h-8">
                 <div class="w-full">
@@ -21,10 +21,7 @@
                         Lees meer <span class="read-more-arrow ml-2">→</span>
                     </button>
                     <span class="text-gray-600 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-300">
-                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                          <circle cx="12" cy="12" r="3"></circle>
-                        </svg>1.2K
+
                     </span>
                     <span class="text-gray-600 inline-flex items-center leading-none text-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-1">
