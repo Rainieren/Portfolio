@@ -21,7 +21,11 @@
     },
     "dependencies": {
         "animate.css": "^4.1.1",
+        "autoprefixer": "^10.0.2",
+        "postcss": "^8.1.8",
         "stable": "^0.1.8",
-        "tailwindcss": "^1.8.10"
+        "tailwindcss": "^2.0.1",
+        "vue": "^2.6.12",
+        "vuelidate": "^0.7.5"
     }
 }

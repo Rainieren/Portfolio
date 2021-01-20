@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ProjectController;
+use \App\Models\Project;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +18,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    $projects = Project::all();
+    return view('index', compact('projects'));
 });
+
+Route::get('/projects/all', [ProjectController::class, 'index']);
+Route::post('/message/store', [MessageController::class, 'store'])->name('store_message');
+
+
