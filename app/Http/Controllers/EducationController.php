@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\ProcessGithub;
-use App\Models\Project;
-use GrahamCampbell\GitHub\Facades\GitHub;
-use GrahamCampbell\GitHub\GitHubManager;
+use App\Models\Education;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class ProjectController extends Controller
+class EducationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +14,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $repos = GitHub::connection('main')->me()->repositories();
-
-        dd($repos);
+        //
     }
 
     /**
@@ -37,11 +31,13 @@ class ProjectController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        //
+        Education::create($request->all());
+
+        return response()->json($request->all());
     }
 
     /**
@@ -92,14 +88,8 @@ class ProjectController extends Controller
     /**
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getAllProjects() {
-        return response()->json(Project::all());
-    }
-
-    /**
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function getAllProjectLanguages() {
-        return response()->json(Project::select('language')->distinct()->get());
+    public function getAllEducations()
+    {
+        return response()->json(Education::all());
     }
 }

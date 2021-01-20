@@ -22,6 +22,7 @@ Route::get('/', function () {
     return view('index', compact('projects'));
 });
 
+Route::get('/projects/all', [ProjectController::class, 'index']);
 Route::post('/message/store', [MessageController::class, 'store'])->name('store_message');
 
 

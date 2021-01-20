@@ -15,7 +15,7 @@
                 <div class="flex flex-col lg:flex-row">
                     <div class="flex w-full lg:w-1/4">
                         <div class="text-black lg:w-auto w-2/4 flex justify-between items-center">
-                            <a href="/"><span class="font-semibold text-xl">Rainier La<span class="text-indigo-600">an</span></span></a>
+                            <a href="/"><span class="font-semibold text-xl">Rainier Laan</span></a>
                         </div>
                         <div class="flex lg:w-auto w-2/4 justify-end lg:hidden">
                             <button id="nav-collapse" class="flex items-center px-3 py-2 text-xl rounded text-black hover:text-black focus:outline-none">
@@ -53,6 +53,7 @@
 
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 
 </html>
