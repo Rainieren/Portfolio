@@ -49,7 +49,7 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     Bericht
                 </label>
-                <textarea v-model.trim="$v.message.$model" v-model="message" :class='{"border-red-600": submitted && $v.message.$error}' name="message" rows="4" class="appearance-none block resize-none rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="message" placeholder="Waar zit je aan te denken?" type="text"></textarea>
+                <textarea v-model="message" :class='{"border-red-600": submitted && $v.message.$error}' name="message" rows="4" class="appearance-none block resize-none rounded-lg w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-600" id="message" placeholder="Waar zit je aan te denken?" type="text"></textarea>
                 <span class="error text-red-500" v-if="submitted && !$v.message.required">Bericht is verplicht!</span>
                 <span class="error text-red-500" v-if="submitted && !$v.message.minLength">Bericht moet minimaal {{$v.message.$params.minLength.min}} tekens zijn!</span>
             </div>

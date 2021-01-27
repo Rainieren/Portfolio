@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-{{--    TODO:: Inplementeer dark modus--}}
+
     <section class="dark-mode-switch">
         <a href="#" class="bg-gradient-to-br from-purple-500 to-indigo-500 w-12 h-12 rounded-lg flex justify-center items-center fixed bottom-0 right-0 z-10 m-10 shadow-lg">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-white font-light">
@@ -10,12 +10,16 @@
         </a>
     </section>
 
-    <section class="settings-popup bg-white bottom-10 right-28 z-20 p-5 rounded-lg fixed shadow-lg" style="min-width: 400px; min-height: 400px; display: none">
+    <section class="settings-popup bg-white bottom-10 right-28 z-20 p-5 rounded-lg fixed shadow-lg" style="min-width: 400px; min-height: 400px;">
         <h4 class="border-b-2 border-gray-200">Instellingen</h4>
         <form action="" class="my-4">
-            <li>Switch Dark modus</li>
-            <li>Select Taal met vlaggetjes</li>
-            <li>Select kleur veranderen keuze uit 3</li>
+            <h6>Accent color:</h6>
+            <div class="color-switcher flex flex-row gap-3 my-3">
+                <a href="" class="rounded-lg h-8 w-8 bg-gradient-to-br from-blue-400 to-light-blue-500 block"></a>
+                <a href="" class="rounded-lg h-8 w-8 bg-gradient-to-br from-green-400 to-cyan-500 block"></a>
+                <a href="" class="rounded-lg h-8 w-8 bg-gradient-to-br from-yellow-400 to-orange-500 block"></a>
+                <a href="" class="rounded-lg h-8 w-8 bg-gradient-to-br from-pink-500 to-rose-500 block"></a>
+            </div>
         </form>
     </section>
 
@@ -100,14 +104,8 @@
                             Filter Language
                         </label>
                         <div class="relative">
-                            <select class="language-filter-dropdown block appearance-none w-full bg-gray-300 border border-gray-200 focus:bg-gray-300 focus:border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none" id="grid-state">
-                                <option selected value="all">All</option>
-                                @foreach($projects->unique('language')->pluck('language') as $language)
-                                    @if($language)
-                                        <option value="{{ $language }}">{{ $language  }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
+                            <project-language-filter-dropdown v-bind:languages="languages"  v-if="languages"></project-language-filter-dropdown>
+
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
@@ -146,8 +144,8 @@
 
 
     <footer class="section-contact footer relative" id="footer">
-        <div class="maps bg-white w-100 flex items-center justify-center" style="height: 250px;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="height: 500px; bottom: 70px; position: relative">
+        <div class="maps bg-white w-100 flex items-center justify-center" style="height: 250px; position: relative; overflow: hidden;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="height: 500px; bottom: 0; position: absolute">
                 <path fill="#6366F1" fill-opacity="1" d="M0,256L30,245.3C60,235,120,213,180,208C240,203,300,213,360,208C420,203,480,181,540,176C600,171,660,181,720,192C780,203,840,213,900,224C960,235,1020,245,1080,250.7C1140,256,1200,256,1260,240C1320,224,1380,192,1410,176L1440,160L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
             </svg>
         </div>
