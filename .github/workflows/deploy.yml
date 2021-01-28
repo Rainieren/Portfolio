@@ -22,9 +22,11 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
 
-      - name: Prepare Laravel Application
+      - name: Copying .env
         run: cp .env.example .env
-             php artisan key:generate
+
+      - name: Run php artisan key generate
+        run: php artisan key:generate
 
       - name: Updating composer.lock file
         run: composer update --lock
