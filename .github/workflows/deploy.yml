@@ -6,23 +6,47 @@ on: # Run the workflow on each tag push
       - v*
 
 jobs:
-  composer-install:
+  Copy-env:
     name: Deployment
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-      - name: List all files to see which branch were working on
-        run: ls -la
-      - name: Updating composer.lock file
-        run: composer update --lock
+  Installing-dependencies:
+    name: Installing dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
       - name: Installing dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-      - name: Generate project key
-        run: php artisan key:generate
-      - name: Change directory permissions
-        run: chmod -R 775 storage bootstrap/cache
-      - name: Database Migrate
-        run: php artisan migrate
+        with:
+          php-version: '7.4'
+      - run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+  Generating_key:
+    name: Generating project key
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Generating project key
+        with:
+          php-version: '7.4'
+      - run: php artisan key:generate
+  Changing_file_permissions:
+    name: Changing file permissions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Changing file permissions
+      - run: chmod -R 775 storage bootstrap/cache
+  Migration_database:
+    name: Migrating Database
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Migrating database
+        with:
+          php-version: '7.4'
+      - run: php artisan migrate
+
+
 
