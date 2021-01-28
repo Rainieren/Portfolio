@@ -7,10 +7,11 @@ Vue.component('project-card-modal', require('./components/projectCardModalCompon
 Vue.component('contact-form', require('./components/contactFormComponent.vue').default);
 Vue.component('contact-form-flash', require('./components/contactFormFlashComponent.vue').default);
 Vue.component('project-language-filter-button', require('./components/projectLanguageButtonFilterComponent.vue').default);
-
+Vue.component('project-language-filter-dropdown', require('./components/projectLanguageDropdownFilterComponent.vue').default);
 Vue.component('education', require('./components/educationComponent.vue').default);
-
 Vue.component('work-experience', require('./components/workExperienceComponent.vue').default);
+
+
 const app = new Vue({
     el: '#app',
     data: {
