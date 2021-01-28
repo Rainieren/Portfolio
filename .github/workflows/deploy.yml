@@ -34,10 +34,6 @@ jobs:
       - name: npm install
         run: npm install
 
-      - name: .env file
-        env:
-          DOT_ENV: ${{ secrets.DOT_ENV }}
-
       - name: Generate project key
         run: php artisan key:generate
 
