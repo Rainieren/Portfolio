@@ -14,19 +14,16 @@ jobs:
         operating-system: [ ubuntu-latest ]
         php-versions: [ '7.4' ]
     steps:
-      - name: Run actions/checkout@v2
+      - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup PHP Version
+      - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
 
       - name: Copying .env
-        run: cp .env.example .env
-
-      - name: Run php artisan key generate
-        run: php artisan key:generate
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
       - name: Updating composer.lock file
         run: composer update --lock
@@ -34,8 +31,11 @@ jobs:
       - name: Installing dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-      - name: Run npm install
+      - name: npm install
         run: npm install
+
+      - name: Generate project key
+        run: php artisan key:generate
 
       - name: Change directory permissions
         run: chmod -R 775 storage bootstrap/cache
