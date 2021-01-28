@@ -9,10 +9,18 @@ jobs:
   Deployment:
     name: Deployment
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        operating-system: [ ubuntu-latest, windows-latest, macOS-latest ]
+        php-versions: [ '7.2', '7.3', '7.4' ]
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup PHP
         with:
-          php-version: '7.4'
+          php-version: ${{ matrix.php-versions }}
+      - name: Check PHP Version
+        run: php -v
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: List all files to see which branch were working on
