@@ -7,20 +7,22 @@ on: # Run the workflow on each tag push
 
 jobs:
   composer-install:
-    name: Composer install
+    name: Deployment
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: List all files to see which branch were working on
         run: ls -la
-      - name: Install dependencies
+      - name: Updating composer.lock file
+        run: composer update --lock
+      - name: Installing dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-      - name: Generate key
+      - name: Generate project key
         run: php artisan key:generate
-      - name: Directory Permissions
+      - name: Change directory permissions
         run: chmod -R 775 storage bootstrap/cache
-      - name: DB Migrate
+      - name: Database Migrate
         run: php artisan migrate
 
