@@ -6,40 +6,22 @@ on: # Run the workflow on each tag push
       - v*
 
 jobs:
-  Deployment:
-    name: Deployment
+  Deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     strategy:
       matrix:
         operating-system: [ ubuntu-latest ]
         php-versions: [ '7.4' ]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Deploy to production
+        uses: appleboy/ssh-action@v0.1.2
         with:
-          php-version: ${{ matrix.php-versions }}
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{secrets.SSH_USERNAME}}
 
-      - name: Copying .env
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+          script: |
+            ls -la
 
-      - name: Updating composer.lock file
-        run: composer update --lock
-
-      - name: Installing dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-
-      - name: npm install
-        run: npm install
-
-      - name: Generate project key
-        run: php artisan key:generate
-
-      - name: Change directory permissions
-        run: chmod -R 775 storage bootstrap/cache
-
-      - name: Database Migrate
-        run: php artisan migrate
 
