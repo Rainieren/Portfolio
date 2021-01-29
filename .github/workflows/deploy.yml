@@ -22,6 +22,6 @@ jobs:
           username: ${{secrets.SSH_USERNAME}}
 
           script: |
-            ls -la
+            cd /var/www/html/
 
 
