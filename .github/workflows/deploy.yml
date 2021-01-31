@@ -6,81 +6,51 @@ on: # Run the workflow on each tag push
       - v*
 
 jobs:
-  Build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        operating-system: [ ubuntu-latest ]
-        php-versions: [ '7.4' ]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php-versions }}
-
-      - name: Copying .env
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-
-      - name: Updating composer.lock file
-        run: composer update --lock
-
-      - name: Installing dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-
-      - name: npm install
-        run: npm install
-
-      - name: Generate project key
-        run: php artisan key:generate
-
-      - name: Change directory permissions
-        run: chmod -R 775 storage bootstrap/cache
-
-      - name: Putting website down
-        run: php artisan down
-
-      - name: Pulling latest changes
-        run: git pull origin master
-
-      - name: Installing dependencies
-        run: composer install —optimize-autoloader —no-dev
-
-      - name: Running schedular
-        run: php artisan schedule:run
-
-      - name: Clearing cache
-        run: php artisan cache:clear
-
-      - name: Putting website online
-        run: php artisan up
-
-#  Deploy:
-#    name: Deploy to production
+#  Staging: # Deploy script to staging to test the product
+#    name: Deploy to staging
 #    runs-on: ubuntu-latest
 #    strategy:
 #      matrix:
 #        operating-system: [ ubuntu-latest ]
 #        php-versions: [ '7.4' ]
 #    steps:
-#      - name: Deploy to production
-#        uses: appleboy/ssh-action@master
-#        with:
-#          host: ${{secrets.SSH_HOST}}
-#          key: ${{secrets.SSH_KEY}}
-#          username: ${{secrets.SSH_USERNAME}}
+#      - name: Checkout
+#        uses: actions/checkout@master
 #
-#          script: |
-#            cd /var/www/html/
-#            ls -la
-#            php artisan down
-#            git pull origin master
-#            composer install —optimize-autoloader —no-dev
-#            php artisan migrate
-#            php artisan schedule:run
-#            php artisan cache:clear
-#            php artisan up
+#      - name: Setup PHP version
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: ${{ matrix.php-versions }}
+
+  Deploy: # Deploy script to production to finalize it
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    needs: [Staging]
+    strategy:
+      matrix:
+        operating-system: [ ubuntu-latest ]
+        php-versions: [ '7.4' ]
+    steps:
+      - name: Deploy to production
+        uses: appleboy/ssh-action@master
+
+        with:
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{secrets.SSH_USERNAME}}
+
+          script: |
+            cd /var/www/html/
+            ls -la
+            php artisan down
+            git pull origin master
+            composer install —optimize-autoloader —no-dev
+            npm install
+            npm run production
+            php artisan migrate
+            php artisan schedule:run
+            php artisan cache:clear
+            php artisan up
 
 
