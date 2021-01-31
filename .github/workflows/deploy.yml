@@ -35,7 +35,7 @@ jobs:
             git pull origin master
             composer install —optimize-autoloader —no-dev
             npm install
-            npm run production
+            npm run dev
             php artisan migrate
             php artisan schedule:run
             php artisan cache:clear
